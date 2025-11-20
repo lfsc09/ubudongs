@@ -1,0 +1,10 @@
+background-color='rgb(23,20,33)'
+cursor-blink-mode='off'
+cursor-shape='underline'
+default-size-columns=130
+default-size-rows=40
+font='FiraCode Nerd Font 12'
+foreground-color='rgb(208,207,204)'
+use-system-font=false
+use-theme-colors=false
+visible-name='User'
