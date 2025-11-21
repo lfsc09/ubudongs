@@ -15,13 +15,24 @@ git config --global tag.gpgsign true
 
 # Generate SSH keys for git if email is provided
 if [[ -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]]; then
-  ssh-keygen -t ed25519 -C "$UBUDONGS_USER_EMAIL"
+  # Output file
+  ssh_key_file="$HOME/.ssh/github_${UBUDONGS_USER_EMAIL//[@.]/_}_ed25519"
+
+  if [[ "$PASSPHRASE" != "$CONFIRM_PASSPHRASE" ]]; then
+    gum style --foreground "red" "Passphrases do not match. Exiting."
+    exit 1
+  fi
+
+  # Ask ssh passphrase
+  passphrase=$(gum input --prompt "SSH passphrase> ")
+  confirm_passphrase=$(gum input --prompt "Confirm SSH passphrase> ")
+
+  ssh-keygen -t ed25519 -C "$UBUDONGS_USER_EMAIL" -f "$ssh_key_file" -N "$passphrase"
 fi
 
 # Generate GPG keys for git if name and email are provided
 if [[ -n "${UBUDONGS_USER_NAME//[[:space:]]/}" && -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]]; then
   cat >gen-gpg-batch <<EOF
-  %no-protection
   Key-Type: rsa
   Key-Length: 4096
   Subkey-Type: rsa
