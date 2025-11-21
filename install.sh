@@ -20,12 +20,18 @@ if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
 
   # Install terminal tools
   source ~/.local/share/ubudongs/install/terminal.sh
+  echo -e "\n${GREEN}[OK] Terminal tools installed.${NC}\n"
 
   # Install desktop tools and tweaks
   source ~/.local/share/ubudongs/install/desktop.sh
+  echo -e "\n${GREEN}[OK] Desktop tools and tweaks installed.${NC}\n"
 
   # Clean up
   source ~/.local/share/ubudongs/install/cleanup.sh
+  echo -e "\n${GREEN}[OK] Cleanup completed.${NC}\n"
+
+  # Reboot to pickup changes
+  gum confirm "Ready to reboot for all settings to take effect?" && sudo reboot || true
 else
   echo -e "${RED}[Error]${NC} This installation requires GNOME desktop environment."
   exit 1
