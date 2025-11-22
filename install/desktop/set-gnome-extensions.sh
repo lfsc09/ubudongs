@@ -18,12 +18,27 @@ sudo cp ~/.local/share/gnome-shell/extensions/caffeine@patapon.info/schemas/org.
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 
 # Configure TopHat
-gsettings set org.gnome.shell.extensions.tophat show-icons false
-gsettings set org.gnome.shell.extensions.tophat show-cpu false
-gsettings set org.gnome.shell.extensions.tophat show-disk false
-gsettings set org.gnome.shell.extensions.tophat show-mem false
-gsettings set org.gnome.shell.extensions.tophat show-fs false
-gsettings set org.gnome.shell.extensions.tophat network-usage-unit bits
+gsettings set org.gnome.shell.extensions.tophat cpu-display 'both'
+gsettings set org.gnome.shell.extensions.tophat cpu-show-cores false
+gsettings set org.gnome.shell.extensions.tophat fs-display 'both'
+gsettings set org.gnome.shell.extensions.tophat fs-hide-in-menu ''
+gsettings set org.gnome.shell.extensions.tophat group-procs true
+gsettings set org.gnome.shell.extensions.tophat mem-abs-units true
+gsettings set org.gnome.shell.extensions.tophat mem-display 'both'
+gsettings set org.gnome.shell.extensions.tophat meter-fg-color '#924d8b'
+gsettings set org.gnome.shell.extensions.tophat mount-to-monitor '/'
+gsettings set org.gnome.shell.extensions.tophat network-device ''
+gsettings set org.gnome.shell.extensions.tophat network-usage-unit 'bytes'
+gsettings set org.gnome.shell.extensions.tophat position-in-panel 'left'
+gsettings set org.gnome.shell.extensions.tophat refresh-rate 'medium'
+gsettings set org.gnome.shell.extensions.tophat show-cpu true
+gsettings set org.gnome.shell.extensions.tophat show-disk true
+gsettings set org.gnome.shell.extensions.tophat show-fs true
+gsettings set org.gnome.shell.extensions.tophat show-icons true
+gsettings set org.gnome.shell.extensions.tophat show-mem true
+gsettings set org.gnome.shell.extensions.tophat show-menu-actions true
+gsettings set org.gnome.shell.extensions.tophat show-net true
+gsettings set org.gnome.shell.extensions.tophat use-system-accent true
 
 # Configure AlphabeticalAppGrid
 gsettings set org.gnome.shell.extensions.alphabetical-app-grid folder-order-position 'end'
