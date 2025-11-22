@@ -3,11 +3,11 @@
 UBUDONGS_ADDITIONAL_TOOLS_DIR=${UBUDONGS_ADDITIONAL_TOOLS_DIR:-"/usr/local/bin/ubudongs"}
 
 # Set Home Folder shortcut to Super+F
-gsettings set org.gnome.settings-daemon.plugins.media-keys home '<Super>f'
+gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>f']"
 # Set Terminal shortcut to Super+Return
-gsettings set org.gnome.settings-daemon.plugins.media-keys terminal '<Super>Return'
+gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Super>Return']"
 # Set lauch browser shortcut to Super+B
-gsettings set org.gnome.settings-daemon.plugins.media-keys browser '<Super>b'
+gsettings set org.gnome.settings-daemon.plugins.media-keys browser "['<Super>b']"
 
 # Disable take a screenshot keybinding (we use flameshot instead)
 gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot '[]'
