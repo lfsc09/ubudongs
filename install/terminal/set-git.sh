@@ -18,8 +18,8 @@ if [[ -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]]; then
   # Output file
   ssh_key_file="$HOME/.ssh/github_${UBUDONGS_USER_EMAIL//[@.]/_}_ed25519"
 
-  echo -e "${BLUE}\n[Info] Create a new SSH key for Github at: $ssh_key_file${NC}"
-  echo -e "${YELLOW}[Action] Prepare to fill the new passphrase.${NC}"
+  echo -e "${INFO}\n[Info] Create a new SSH key for Github at: $ssh_key_file${NC}"
+  echo -e "${WARNING}[Action] Prepare to fill the new passphrase.${NC}"
 
   if [[ "$PASSPHRASE" != "$CONFIRM_PASSPHRASE" ]]; then
     gum style --foreground "red" "Passphrases do not match. Exiting."
@@ -35,8 +35,8 @@ fi
 
 # Generate GPG keys for git if name and email are provided
 if [[ -n "${UBUDONGS_USER_NAME//[[:space:]]/}" && -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]]; then
-  echo -e "${BLUE}\n[Info] Create a new Github GPG key for Git signing.${NC}"
-  echo -e "${YELLOW}[Action] Prepare to fill the new passphrase.${NC}"
+  echo -e "${INFO}\n[Info] Create a new Github GPG key for Git signing.${NC}"
+  echo -e "${WARNING}[Action] Prepare to fill the new passphrase.${NC}"
 
   cat >gen-gpg-batch <<EOF
   Key-Type: rsa
