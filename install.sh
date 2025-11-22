@@ -5,7 +5,7 @@ set -e
 source ~/.local/share/ubudongs/install/check-version.sh
 
 # Ask for some choices and information
-echo "Get ready to make a few choices..."
+echo -e "${BLUE}\n[Info] Get ready to make a few choices...${NC}"
 source ~/.local/share/ubudongs/install/terminal/required/app-gum.sh >/dev/null
 source ~/.local/share/ubudongs/install/select-optional-apps.sh
 source ~/.local/share/ubudongs/install/identification.sh
@@ -16,23 +16,23 @@ if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
   gsettings set org.gnome.desktop.screensaver lock-enabled false
   gsettings set org.gnome.desktop.session idle-delay 0
 
-  echo "Installing terminal and desktop tools..."
+  echo -e "${BLUE}[Info] Installing terminal and desktop tools...${NC}"
 
   # Install terminal tools
   source ~/.local/share/ubudongs/install/terminal.sh
-  echo -e "\n${GREEN}[OK] Terminal tools installed.${NC}\n"
+  echo -e "${GREEN}\n[OK] Terminal tools installed.${NC}\n"
 
   # Install desktop tools and tweaks
   source ~/.local/share/ubudongs/install/desktop.sh
-  echo -e "\n${GREEN}[OK] Desktop tools and tweaks installed.${NC}\n"
+  echo -e "${GREEN}\n[OK] Desktop tools and tweaks installed.${NC}\n"
 
   # Clean up
   source ~/.local/share/ubudongs/install/cleanup.sh
-  echo -e "\n${GREEN}[OK] Cleanup completed.${NC}\n"
+  echo -e "${GREEN}\n[OK] Cleanup completed.${NC}\n"
 
   # Reboot to pickup changes
   gum confirm "Ready to reboot for all settings to take effect?" && sudo reboot || true
 else
-  echo -e "${RED}[Error]${NC} This installation requires GNOME desktop environment."
+  echo -e "${RED}\n[Error] This installation requires GNOME desktop environment.${NC}"
   exit 1
 fi
