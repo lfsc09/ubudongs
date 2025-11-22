@@ -7,7 +7,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>f']"
 # Set Terminal shortcut to Super+Return
 gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Super>Return']"
 # Set lauch browser shortcut to Super+B
-gsettings set org.gnome.settings-daemon.plugins.media-keys browser "['<Super>b']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys www "['<Super>b']"
 
 # Disable take a screenshot keybinding (we use flameshot instead)
 gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot '[]'
