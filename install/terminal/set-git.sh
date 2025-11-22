@@ -14,12 +14,8 @@ echo -e "${INFO}\n[Info] Copying Git global configuration file to ${git_config}/
 if [ ! -d "$git_config" ]; then mkdir -p "$git_config"; fi
 cp ~/.local/share/ubudongs/configs/git/config "${git_config}/config"
 
-# Set gpg signing options
-git config --global commit.gpgsign true
-git config --global tag.gpgsign true
-
 # Generate SSH keys for git if email is provided
-if [[ -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]]; then
+if [[ -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]] && gum confirm "Install Github SSH keys?"; then
   # Output file
   ssh_key_file="$HOME/.ssh/github_${UBUDONGS_USER_EMAIL//[@.]/_}_ed25519"
 
@@ -39,7 +35,7 @@ if [[ -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]]; then
 fi
 
 # Generate GPG keys for git if name and email are provided
-if [[ -n "${UBUDONGS_USER_NAME//[[:space:]]/}" && -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]]; then
+if [[ -n "${UBUDONGS_USER_NAME//[[:space:]]/}" && -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]] && gum confirm "Install Github GPG keys?"; then
   echo -e "${INFO}\n[Info] Create a new Github GPG key for Git signing.${NC}"
   echo -e "${WARNING}[Action] Prepare to fill the new passphrase.${NC}"
 
@@ -58,4 +54,6 @@ EOF
 
   GPG_KEY_ID=$(gpg --list-secret-keys --keyid-format LONG "$UBUDONGS_USER_EMAIL" | grep sec | awk '{print $2}' | cut -d'/' -f2)
   git config --global user.signingkey "$GPG_KEY_ID"
+  git config --global commit.gpgsign true
+  git config --global tag.gpgsign true
 fi
