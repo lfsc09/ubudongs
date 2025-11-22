@@ -6,7 +6,6 @@ sudo rm -rf /usr/share/applications/org.flameshot.Flameshot.desktop
 # Remove vim entry as it's terminal based
 sudo rm -rf /usr/share/applications/vim.desktop
 
-# TODO: Unsure what this does
 # Remove the ImageMagick icon
 sudo rm -rf /usr/share/applications/display-im6.q16.desktop
 sudo rm -rf /usr/share/applications/display-im7.q16.desktop
