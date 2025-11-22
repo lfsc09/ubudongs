@@ -9,6 +9,11 @@ if [[ -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]]; then
   git config --global user.email "$UBUDONGS_USER_EMAIL"
 fi
 
+git_config="$HOME/.config/git"
+echo -e "${INFO}\n[Info] Copying Git global configuration file to ${git_config}/config...${NC}"
+if [ ! -d "$git_config" ]; then mkdir -p "$git_config"; fi
+cp ~/.local/share/ubudongs/configs/git/config "${git_config}/config"
+
 # Set gpg signing options
 git config --global commit.gpgsign true
 git config --global tag.gpgsign true
