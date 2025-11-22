@@ -9,5 +9,5 @@ sudo apt install -y fastfetch
 if [ ! -f "$HOME/.config/fastfetch/config.jsonc" ]; then
   # Use Ubudongs fastfetch config
   mkdir -p ~/.config/fastfetch
-  cp ~/.local/share/ubudongs/configs/fastfetch.jsonc ~/.config/fastfetch/config.jsonc
+  cp ~/.local/share/ubudongs/configs/fastfetch/fastfetch.jsonc ~/.config/fastfetch/config.jsonc
 fi

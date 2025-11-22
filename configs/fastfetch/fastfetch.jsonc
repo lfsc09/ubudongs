@@ -19,7 +19,7 @@
         },
         {
             "type": "cpu",
-            "key": "│ ├",
+            "key": "│ ├",
             "showPeCoreCount": true,
             "keyColor": "green"
         },
