@@ -45,3 +45,22 @@ gsettings set org.gnome.shell.extensions.alphabetical-app-grid folder-order-posi
 
 # Configure Caffeine
 gsettings set org.gnome.shell.extensions.caffeine cli-toggle true
+
+# Configure default Ubuntu Tiling Assistant
+gsettings set org.gnome.shell.extensions.tiling-assistant active-window-hint 0
+gsettings set org.gnome.shell.extensions.tiling-assistant dynamic-keybinding-behavior 1
+gsettings set org.gnome.shell.extensions.tiling-assistant enable-raise-tile-group false
+gsettings set org.gnome.shell.extensions.tiling-assistant enable-tiling-popup false
+gsettings set org.gnome.shell.extensions.tiling-assistant maximize-with-gap true
+gsettings set org.gnome.shell.extensions.tiling-assistant single-screen-gap 6
+gsettings set org.gnome.shell.extensions.tiling-assistant window-gap 6
+gsettings set org.gnome.shell.extensions.tiling-assistant restore-window '[]'
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-bottomleft-quarter "['<Super><Shift>comma']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-bottom-half "['<Super><Shift>period']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-bottomright-quarter "['<Super><Shift>slash']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-left-half "['<Super><Shift>l']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-maximize "['<Super><Shift>semicolon']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-right-half "['<Super><Shift>apostrophe']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-topleft-quarter "['<Super><Shift>p']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-top-half "['<Super><Shift>bracketleft']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-topright-quarter "['<Super><Shift>bracketright']"
