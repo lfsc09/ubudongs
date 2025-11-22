@@ -10,11 +10,11 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Super>Re
 gsettings set org.gnome.settings-daemon.plugins.media-keys www "['<Super>b']"
 
 # Disable take a screenshot keybinding (we use flameshot instead)
-gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot '[]'
+gsettings set org.gnome.shell.keybindings screenshot '[]'
 # Disable take a screenshot of a window keybinding
-gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot '[]'
+gsettings set org.gnome.shell.keybindings screenshot-window '[]'
 # Disable take a screenshot interactively keybinding
-gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot '[]'
+gsettings set org.gnome.shell.keybindings show-screenshot-ui '[]'
 
 # Disable lauch help browser keybinding
 gsettings set org.gnome.settings-daemon.plugins.media-keys help '[]'
