@@ -19,6 +19,7 @@ NC='\033[0m' # No Color
 export OK INFO WARNING ERROR NC
 
 echo -e "$ascii_art"
+echo -e "${WARNING}=> $(cat version)${NC}"
 echo -e "${WARNING}=> Ubudongs is for fresh Ubuntu 24.04+ installations only!${NC}"
 echo -e "${INFO}\n[Info] Begin installation (or abort with ctrl+c)...${NC}"
 

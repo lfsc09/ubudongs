@@ -1,0 +1,39 @@
+name: Update version file & move latest tag on release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  update-version-and-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0   # Required so we can push tags and commits
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+      - name: Update version file
+        run: |
+          TAG="${{ github.event.release.tag_name }}"
+          echo "$TAG" > version
+          git add version
+          git commit -m "Update version file to $TAG" || echo "No changes to commit"
+
+      - name: Push version update
+        run: git push origin HEAD:main
+
+      - name: Move 'latest' tag to this release
+        run: |
+          TAG="${{ github.event.release.tag_name }}"
+
+          # Force move the 'latest' tag to this tag's commit
+          git tag -f latest "$TAG"
+          git push origin -f latest
