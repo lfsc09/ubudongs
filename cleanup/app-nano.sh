@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo apt remove -y nano
+sudo apt-get remove --purge -y nano
