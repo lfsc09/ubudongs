@@ -38,5 +38,8 @@ gsettings set org.gnome.desktop.interface clock-show-weekday true
 gsettings set org.gnome.desktop.session idle-delay 0
 gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
 
+# Disable top accessibility menu icon
+gsettings set org.gnome.desktop.a11y always-show-universal-access-status false
+
 # Create default home Work folder
 mkdir -p ~/Work
