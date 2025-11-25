@@ -19,7 +19,6 @@ NC='\033[0m' # No Color
 export OK INFO WARNING ERROR NC
 
 echo -e "$ascii_art"
-echo -e "${WARNING}=> $(cat version)${NC}"
 echo -e "${WARNING}=> Ubudongs is for fresh Ubuntu 24.04+ installations only!${NC}"
 echo -e "${INFO}\n[Info] Begin installation (or abort with ctrl+c)...${NC}"
 
@@ -30,5 +29,6 @@ echo -e "${INFO}[Info] Cloning Ubudongs...${NC}"
 rm -rf ~/.local/share/ubudongs
 git clone https://github.com/lfsc09/ubudongs.git ~/.local/share/ubudongs >/dev/null
 
+echo -e "${WARNING}=> $(cat ~/.local/share/ubudongs/version)${NC}"
 echo -e "${INFO}[Info] Installation starting...${NC}"
 source ~/.local/share/ubudongs/install.sh
