@@ -1,4 +1,4 @@
-name: Update version file & move latest tag on release
+name: Update version file
 
 on:
   release:
@@ -32,11 +32,3 @@ jobs:
 
       - name: Push version update
         run: git push origin HEAD:main
-
-      - name: Move 'latest' tag to this release
-        run: |
-          TAG="${{ github.event.release.tag_name }}"
-
-          # Force move the 'latest' tag to this tag's commit
-          git tag -f latest "$TAG"
-          git push origin -f latest
