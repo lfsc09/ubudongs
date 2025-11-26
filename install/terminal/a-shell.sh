@@ -3,6 +3,7 @@
 # Configure the bash shell using Ubudongs defaults
 [ -f ~/.bashrc ] && mv ~/.bashrc ~/.bashrc.bak
 cp $UBUDONGS_PATH/configs/bashrc ~/.bashrc
+source ~/.bashrc
 
 # Configure the inputrc using Ubudongs defaults
 [ -f ~/.inputrc ] && mv ~/.inputrc ~/.inputrc.bak
