@@ -66,3 +66,6 @@ gsettings set org.gnome.shell.extensions.tiling-assistant tile-right-half "['<Co
 gsettings set org.gnome.shell.extensions.tiling-assistant tile-topleft-quarter "['<Control><Super>p']"
 gsettings set org.gnome.shell.extensions.tiling-assistant tile-top-half "['<Control><Super>bracketleft']"
 gsettings set org.gnome.shell.extensions.tiling-assistant tile-topright-quarter "['<Control><Super>bracketright']"
+
+# Configure Notification Configurator
+gsettings set org.gnome.shell.extensions.notification-configurator notification-position 'right'
