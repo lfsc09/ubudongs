@@ -1,51 +1,83 @@
 #!/bin/bash
 
-# Theme color
-UBUDONGS_THEME_COLOR="purple"
+############################
+# Change Ubuntu theme color
+############################
+ubuntu_theme_color="purple"
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.interface cursor-theme 'Yaru'
+gsettings set org.gnome.desktop.interface gtk-theme "Yaru-$ubuntu_theme_color-dark"
+gsettings set org.gnome.desktop.interface icon-theme "Yaru-$ubuntu_theme_color"
+gsettings set org.gnome.desktop.interface accent-color "$ubuntu_theme_color" 2>/dev/null || true
 
-# Default wallpaper filename
-UBUDONGS_DEFAULT_WALLPAPER="evening-landscape.jpg"
-UBUDONGS_DEFAULT_LOCKSCREEN="ubuntu-minimal.jpg"
-UBUDONGS_DEFAULT_USER="user.png"
+######################################################
+# Setup Wallpapers & Lockscreens images & User avatar
+######################################################
 # Find current main screen resolution
-UBUDONGS_SCREEN_RESOLUTION=$(xdpyinfo | grep dimensions | awk '{print $2}')
+screen_resolution=$(xdpyinfo | grep dimensions | awk '{print $2}')
 # Theme images destination directory
-UBUDONGS_DEST_DIR="$HOME/.local/share/backgrounds/dongs"
-if [ ! -d "$UBUDONGS_DEST_DIR" ]; then mkdir -p "$UBUDONGS_DEST_DIR"; fi
-# User avatar destination directory
-AVATAR_DEST_DIR="$HOME/.face"
-if [ ! -d "$AVATAR_DEST_DIR" ]; then mkdir -p "$AVATAR_DEST_DIR"; fi
+ubudongs_images_dest_dir="$HOME/.local/share/backgrounds/dongs"
+if [ ! -d "$ubudongs_images_dest_dir" ]; then mkdir -p "$ubudongs_images_dest_dir"; fi
+
+#############
+# Wallpapers
+#############
+# Default wallpaper filename
+ubudongs_default_wallpaper="evening-landscape.jpg"
 
 # Check wallpapers for the current resolution
-UBUDONGS_WALLPAPERS_BASE="$UBUDONGS_PATH/themes/dongs/wallpapers"
-if [ ! -d "$UBUDONGS_WALLPAPERS_BASE/@${UBUDONGS_SCREEN_RESOLUTION}" ]; then
+ubudongs_wallpapers_base_dir="$UBUDONGS_PATH/themes/dongs/wallpapers"
+if [ ! -d "$ubudongs_wallpapers_base_dir/@${screen_resolution}" ]; then
     # If not found, fallback to 4k
-    UBUDONGS_WALLPAPER_RESOLUTION="3840x2160"
+    ubudongs_wallpaper_resolution="3840x2160"
 else
-    UBUDONGS_WALLPAPER_RESOLUTION="$UBUDONGS_SCREEN_RESOLUTION"
+    ubudongs_wallpaper_resolution="$screen_resolution"
 fi
 
 # Add all theme wallpapers
-cp -r $UBUDONGS_WALLPAPERS_BASE $UBUDONGS_DEST_DIR
+cp -r $ubudongs_wallpapers_base_dir $ubudongs_images_dest_dir
+
+# Get the default wallpaper
+ubudongs_wallpaper_filepath="$ubudongs_images_dest_dir/wallpapers/@${ubudongs_wallpaper_resolution}/${ubudongs_default_wallpaper}"
+
+# Set default wallpaper
+gsettings set org.gnome.desktop.background picture-uri $ubudongs_wallpaper_filepath
+gsettings set org.gnome.desktop.background picture-uri-dark $ubudongs_wallpaper_filepath
+gsettings set org.gnome.desktop.background picture-options 'zoom'
+
+##############
+# Lockscreens
+##############
+ubudongs_default_lockscreen="ubuntu-minimal.jpg"
 
 # Check lockscreen for the current resolution
-UBUDONGS_LOCKSCREENS_BASE="$UBUDONGS_PATH/themes/dongs/lockscreens"
-if [ ! -d "$UBUDONGS_LOCKSCREENS_BASE/@${UBUDONGS_SCREEN_RESOLUTION}" ]; then
+ubudongs_lockscreens_base_dir="$UBUDONGS_PATH/themes/dongs/lockscreens"
+if [ ! -d "$ubudongs_lockscreens_base_dir/@${screen_resolution}" ]; then
     # If not found, fallback to 4k
-    UBUDONGS_LOCKSCREEN_RESOLUTION="3840x2160"
+    ubudongs_lockscreen_resolution="3840x2160"
 else
-    UBUDONGS_LOCKSCREEN_RESOLUTION="$UBUDONGS_SCREEN_RESOLUTION"
+    ubudongs_lockscreen_resolution="$screen_resolution"
 fi
 
 # Add all theme lockscreens
-cp -r $UBUDONGS_LOCKSCREENS_BASE $UBUDONGS_DEST_DIR
+cp -r $ubudongs_lockscreens_base_dir $ubudongs_images_dest_dir
+
+# Get the default lockscreen
+ubudongs_lockscreen_filepath="$ubudongs_images_dest_dir/lockscreens/@${ubudongs_lockscreen_resolution}/${ubudongs_default_lockscreen}"
+
+# Set default lockscreen
+gsettings set org.gnome.desktop.screensaver picture-uri $ubudongs_lockscreen_filepath
+gsettings set org.gnome.desktop.screensaver picture-options 'zoom'
+
+##############
+# User avatar
+##############
+ubudongs_default_user_image="user.png"
+
+# User avatar destination directory
+avatar_image_dest_dir="$HOME/.face"
+if [ ! -d "$avatar_image_dest_dir" ]; then mkdir -p "$avatar_image_dest_dir"; fi
 
 # Add user default image
-UBUDONGS_USER_IMAGE="$UBUDONGS_PATH/themes/dongs/${UBUDONGS_DEFAULT_USER}"
-cp $UBUDONGS_USER_IMAGE $AVATAR_DEST_DIR
-
-# Get the default wallpaper
-UBUDONGS_THEME_BACKGROUND="$UBUDONGS_DEST_DIR/wallpapers/@${UBUDONGS_WALLPAPER_RESOLUTION}/${UBUDONGS_DEFAULT_WALLPAPER}"
-# Get the default lockscreen
-UBUDONGS_THEME_LOCKSCREEN="$UBUDONGS_DEST_DIR/lockscreens/@${UBUDONGS_LOCKSCREEN_RESOLUTION}/${UBUDONGS_DEFAULT_LOCKSCREEN}"
-source $UBUDONGS_PATH/themes/set-gnome-theme.sh
+ubudongs_user_image="$UBUDONGS_PATH/themes/dongs/${ubudongs_default_user_image}"
+cp $ubudongs_user_image $avatar_image_dest_dir

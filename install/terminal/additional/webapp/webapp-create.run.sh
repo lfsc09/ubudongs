@@ -1,45 +1,45 @@
 #!/bin/bash
 
 echo -e "\e[32mLet's create a new web app you can start.\n\e[0m"
-APP_NAME=$(gum input --prompt "Name> " --placeholder "My favorite web app")
-APP_URL=$(gum input --prompt "URL> " --placeholder "https://example.com")
-ICON_REF=$(gum input --prompt "Icon URL> " --placeholder "See https://dashboardicons.com (must use PNG!)")
+app_name=$(gum input --prompt "Name> " --placeholder "My favorite web app")
+app_url=$(gum input --prompt "URL> " --placeholder "https://example.com")
+icon_ref=$(gum input --prompt "Icon URL> " --placeholder "See https://dashboardicons.com (must use PNG!)")
 
 # Ensure valid execution
-if [[ -z "$APP_NAME" || -z "$APP_URL" || -z "$ICON_REF" ]]; then
+if [[ -z "$app_name" || -z "$app_url" || -z "$icon_ref" ]]; then
   echo "You must set app name, app URL, and icon URL!"
   exit 1
 fi
 
 # Refer to local icon or fetch remotely from URL
-ICON_DIR="$HOME/.local/share/applications/icons"
-if [[ $ICON_REF =~ ^https?:// ]]; then
-  ICON_PATH="$ICON_DIR/$APP_NAME.png"
-  if curl -sL -o "$ICON_PATH" "$ICON_REF"; then
-    ICON_PATH="$ICON_DIR/$APP_NAME.png"
+icon_dir="$HOME/.local/share/applications/icons"
+if [[ $icon_ref =~ ^https?:// ]]; then
+  icon_path="$icon_dir/$app_name.png"
+  if curl -sL -o "$icon_path" "$icon_ref"; then
+    icon_path="$icon_dir/$app_name.png"
   else
     echo "Error: Failed to download icon."
     exit 1
   fi
 else
-  ICON_PATH="$ICON_DIR/$ICON_REF"
+  icon_path="$icon_dir/$icon_ref"
 fi
 
 # Create application .desktop file
-DESKTOP_FILE="$HOME/.local/share/applications/$APP_NAME.desktop"
+desktop_file="$HOME/.local/share/applications/$app_name.desktop"
 
-cat >"$DESKTOP_FILE" <<EOF
+cat >"$desktop_file" <<EOF
 [Desktop Entry]
 Version=1.0
-Name=$APP_NAME
-Comment=$APP_NAME
-Exec=google-chrome --app="$APP_URL" --name="$APP_NAME" --class="$APP_NAME"
+Name=$app_name
+Comment=$app_name
+Exec=google-chrome --app="$app_url" --name="$app_name" --class="$app_name"
 Terminal=false
 Type=Application
-Icon=$ICON_PATH
+Icon=$icon_path
 StartupNotify=true
 EOF
 
-chmod +x "$DESKTOP_FILE"
+chmod +x "$desktop_file"
 
-echo -e "\033[0;32m[Ok] You can now find $APP_NAME in the app grid\n\033[0m"
+echo -e "\033[0;32m[Ok] You can now find $app_name in the app grid\n\033[0m"

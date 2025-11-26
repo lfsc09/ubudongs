@@ -1,10 +1,10 @@
 #!/bin/bash
 
-APP_DEST_DIR="$HOME/.local/share/applications"
+export APPLICATIONS_DEST_DIR="$HOME/.local/share/applications"
 
 # Copy application icons
-ICONS_DEST_DIR="$APP_DEST_DIR/icons"
-if [ ! -d "$ICONS_DEST_DIR" ]; then mkdir -p "$ICONS_DEST_DIR"; fi
-cp $UBUDONGS_PATH/applications/icons/*.png "$ICONS_DEST_DIR/"
+application_icons_dest_dir="$APPLICATIONS_DEST_DIR/icons"
+if [ ! -d "$application_icons_dest_dir" ]; then mkdir -p "$application_icons_dest_dir"; fi
+cp $UBUDONGS_PATH/applications/icons/*.png "$application_icons_dest_dir/"
 
 for script in $UBUDONGS_PATH/applications/*.sh; do source $script; done

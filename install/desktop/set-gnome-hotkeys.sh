@@ -1,6 +1,6 @@
 #!/bin/bash
 
-UBUDONGS_ADDITIONAL_TOOLS_DIR=${UBUDONGS_ADDITIONAL_TOOLS_DIR:-"/usr/local/bin/ubudongs"}
+export UBUDONGS_ADDITIONAL_TOOLS_DIR=${UBUDONGS_ADDITIONAL_TOOLS_DIR:-"/usr/local/bin/ubudongs"}
 
 # Set Home Folder shortcut to Super+F
 gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>f']"

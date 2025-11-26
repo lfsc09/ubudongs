@@ -52,8 +52,8 @@ EOF
   gpg --batch --generate-key gen-gpg-batch
   rm gen-gpg-batch
 
-  GPG_KEY_ID=$(gpg --list-secret-keys --keyid-format LONG "$UBUDONGS_USER_EMAIL" | grep sec | awk '{print $2}' | cut -d'/' -f2)
-  git config --global user.signingkey "$GPG_KEY_ID"
+  gpg_key_id=$(gpg --list-secret-keys --keyid-format LONG "$UBUDONGS_USER_EMAIL" | grep sec | awk '{print $2}' | cut -d'/' -f2)
+  git config --global user.signingkey "$gpg_key_id"
   git config --global commit.gpgsign true
   git config --global tag.gpgsign true
 fi
