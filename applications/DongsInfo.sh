@@ -7,7 +7,7 @@ cat <<EOF >$desktop_file
 Version=1.0
 Name=DongsInfo
 Comment=Show system information using fastfetch
-Exec=gnome-terminal --title=DongsInfo -- dongs
+Exec=gnome-terminal --title=DongsInfo -- bash -i -c "dongs"
 Terminal=false
 Type=Application
 Icon=$APPLICATIONS_DEST_DIR/icons/DongsInfo.png
