@@ -9,5 +9,8 @@ sudo apt install -y fastfetch
 if [ ! -f "$HOME/.config/fastfetch/config.jsonc" ]; then
   # Use Ubudongs fastfetch config
   mkdir -p ~/.config/fastfetch
-  cp ~/.local/share/ubudongs/configs/fastfetch/fastfetch.jsonc ~/.config/fastfetch/config.jsonc
+  cp $UBUDONGS_PATH/configs/fastfetch/fastfetch.jsonc ~/.config/fastfetch/config.jsonc
+
+  # Copy Ubudongs ASCII text file for fastfetch logo
+  cp $UBUDONGS_PATH/ascii-art ~/.config/fastfetch/ubudongs-ascii
 fi
