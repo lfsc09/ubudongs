@@ -27,16 +27,16 @@ gsettings set org.gnome.shell.extensions.tophat fs-hide-in-menu ''
 gsettings set org.gnome.shell.extensions.tophat group-procs true
 gsettings set org.gnome.shell.extensions.tophat mem-abs-units true
 gsettings set org.gnome.shell.extensions.tophat mem-display 'both'
-gsettings set org.gnome.shell.extensions.tophat meter-fg-color '#924d8b'
+gsettings set org.gnome.shell.extensions.tophat meter-fg-color 'rgb(38, 162, 105)'
 gsettings set org.gnome.shell.extensions.tophat mount-to-monitor '/'
 gsettings set org.gnome.shell.extensions.tophat network-device ''
 gsettings set org.gnome.shell.extensions.tophat network-usage-unit 'bytes'
 gsettings set org.gnome.shell.extensions.tophat position-in-panel 'left'
 gsettings set org.gnome.shell.extensions.tophat refresh-rate 'medium'
 gsettings set org.gnome.shell.extensions.tophat show-cpu true
-gsettings set org.gnome.shell.extensions.tophat show-disk true
-gsettings set org.gnome.shell.extensions.tophat show-fs true
-gsettings set org.gnome.shell.extensions.tophat show-icons true
+gsettings set org.gnome.shell.extensions.tophat show-disk false
+gsettings set org.gnome.shell.extensions.tophat show-fs false
+gsettings set org.gnome.shell.extensions.tophat show-icons false
 gsettings set org.gnome.shell.extensions.tophat show-mem true
 gsettings set org.gnome.shell.extensions.tophat show-menu-actions true
 gsettings set org.gnome.shell.extensions.tophat show-net true
