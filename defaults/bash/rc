@@ -1,4 +1,0 @@
-source ~/.local/share/ubudongs/defaults/bash/shell
-source ~/.local/share/ubudongs/defaults/bash/functions
-source ~/.local/share/ubudongs/defaults/bash/prompt
-source ~/.local/share/ubudongs/defaults/bash/init
