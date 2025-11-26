@@ -1,7 +1,7 @@
 # Overwrite default 'ls' with 'eza' for better visuals
-alias ls='eza -lh --group-directories-first --icons=auto'
+alias ls='eza --long --group-directories-last --header --inode --modified --total-size --octal-permissions'
 alias lsa='ls -a'
-alias lt='eza --tree --level=2 --long --icons --git'
+alias lt='eza --tree --long --level=2 --header --git --created --modified --accessed --total-size --no-permissions'
 alias lta='lt -a'
 
 # Add fastfetch alias
