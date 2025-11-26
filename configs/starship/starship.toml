@@ -3,8 +3,5 @@
 add_newline = true
 command_timeout = 200
 
-[directory]
-truncation_symbol = "…/"
-
 [git_status]
 conflicted = ""
