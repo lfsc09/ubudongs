@@ -20,7 +20,7 @@ export OK INFO WARNING ERROR NC
 export UBUDONGS_PATH="$HOME/.local/share/ubudongs"
 
 echo -e "$ascii_art"
-echo -e "${WARNING}=> Ubudongs is for fresh Ubuntu 24.04+ installations only!${NC}"
+echo -e "${WARNING}> Ubudongs is for fresh Ubuntu 24.04+ installations only!${NC}"
 echo -e "${INFO}\n[Info] Begin installation (or abort with ctrl+c)...${NC}"
 
 sudo apt-get update >/dev/null
@@ -30,7 +30,7 @@ echo -e "${INFO}[Info] Cloning Ubudongs...${NC}"
 rm -rf $UBUDONGS_PATH
 git clone https://github.com/lfsc09/ubudongs.git $UBUDONGS_PATH >/dev/null
 
-echo -e "${WARNING}=> $(cat $UBUDONGS_PATH/version)${NC}"
+echo -e "${WARNING}\n> Ubudongs installer $(cat $UBUDONGS_PATH/version)${NC}"
 echo -e "${INFO}[Info] Installation starting...${NC}"
 
 source $UBUDONGS_PATH/install.sh
