@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Run desktop installers
-for installer in ~/.local/share/ubudongs/install/desktop/*.sh; do source $installer; done
+for installer in $UBUDONGS_PATH/install/desktop/*.sh; do source $installer; done

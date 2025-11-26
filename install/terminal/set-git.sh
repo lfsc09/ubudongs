@@ -12,7 +12,7 @@ fi
 git_config="$HOME/.config/git"
 echo -e "${INFO}\n[Info] Copying Git global configuration file to ${git_config}/config...${NC}"
 if [ ! -d "$git_config" ]; then mkdir -p "$git_config"; fi
-cp ~/.local/share/ubudongs/configs/git/config "${git_config}/config"
+cp $UBUDONGS_PATH/configs/git/config "${git_config}/config"
 
 # Generate SSH keys for git if email is provided
 if [[ -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]] && gum confirm "Install Github SSH keys?"; then

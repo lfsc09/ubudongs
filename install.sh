@@ -2,13 +2,13 @@
 set -e
 
 # Check the distribution name and version and abort if incompatible
-source ~/.local/share/ubudongs/install/check-version.sh
+source $UBUDONGS_PATH/install/check-version.sh
 
 # Ask for some choices and information
 echo -e "${INFO}\n[Info] Get ready to make a few choices...${NC}"
-source ~/.local/share/ubudongs/install/terminal/required/app-gum.sh >/dev/null
-source ~/.local/share/ubudongs/install/select-optional-apps.sh
-source ~/.local/share/ubudongs/install/identification.sh
+source $UBUDONGS_PATH/install/terminal/required/app-gum.sh >/dev/null
+source $UBUDONGS_PATH/install/select-optional-apps.sh
+source $UBUDONGS_PATH/install/identification.sh
 
 # Desktop software and tweaks will only be installed if we're running Gnome
 if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
@@ -19,15 +19,15 @@ if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
   echo -e "${INFO}[Info] Installing terminal and desktop tools...${NC}"
 
   # Install terminal tools
-  source ~/.local/share/ubudongs/install/terminal.sh
+  source $UBUDONGS_PATH/install/terminal.sh
   echo -e "${OK}\n[OK] Terminal tools installed.${NC}\n"
 
   # Install desktop tools and tweaks
-  source ~/.local/share/ubudongs/install/desktop.sh
+  source $UBUDONGS_PATH/install/desktop.sh
   echo -e "${OK}\n[OK] Desktop tools and tweaks installed.${NC}\n"
 
   # Clean up
-  source ~/.local/share/ubudongs/install/cleanup.sh
+  source $UBUDONGS_PATH/install/cleanup.sh
   echo -e "${OK}\n[OK] Cleanup completed.${NC}\n"
 
   # Reboot to pickup changes

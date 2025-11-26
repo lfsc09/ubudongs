@@ -1,3 +1,3 @@
 #!/bin/bash
 
-for cleaner in ~/.local/share/ubudongs/cleanup/*.sh; do source $cleaner; done
+for cleaner in $UBUDONGS_PATH/cleanup/*.sh; do source $cleaner; done
