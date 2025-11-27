@@ -9,14 +9,14 @@ gum confirm "To install Gnome extensions, you need to accept some confirmations.
 # Install new extensions
 gext install tophat@fflewddur.github.io
 gext install AlphabeticalAppGrid@stuarthayhurst
-gext install caffeine@patapon.info
 gext install notification-configurator@exposedcat
+gext install unblank@sun.wxg@gmail.com
 
 # Compile gsettings schemas in order to be able to set them
 sudo cp ~/.local/share/gnome-shell/extensions/tophat@fflewddur.github.io/schemas/org.gnome.shell.extensions.tophat.gschema.xml /usr/share/glib-2.0/schemas/
 sudo cp ~/.local/share/gnome-shell/extensions/AlphabeticalAppGrid\@stuarthayhurst/schemas/org.gnome.shell.extensions.AlphabeticalAppGrid.gschema.xml /usr/share/glib-2.0/schemas/
-sudo cp ~/.local/share/gnome-shell/extensions/caffeine@patapon.info/schemas/org.gnome.shell.extensions.caffeine.gschema.xml /usr/share/glib-2.0/schemas/
 sudo cp ~/.local/share/gnome-shell/extensions/notification-configurator@exposedcat/schemas/org.gnome.shell.extensions.notification-configurator.gschema.xml /usr/share/glib-2.0/schemas/
+sudo cp ~/.local/share/gnome-shell/extensions/unblank@sun.wxg@gmail.com/schemas/org.gnome.shell.extensions.unblank.gschema.xml /usr/share/glib-2.0/schemas/
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 
 # Configure TopHat
@@ -44,9 +44,6 @@ gsettings set org.gnome.shell.extensions.tophat use-system-accent true
 
 # Configure AlphabeticalAppGrid
 gsettings set org.gnome.shell.extensions.alphabetical-app-grid folder-order-position 'end'
-
-# Configure Caffeine
-gsettings set org.gnome.shell.extensions.caffeine cli-toggle true
 
 # Configure default Ubuntu Tiling Assistant
 gsettings set org.gnome.shell.extensions.tiling-assistant active-window-hint 0

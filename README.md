@@ -61,7 +61,7 @@ Standard gnome terminal pumped with:
 
 - Tophat
 - AlphabeticalAppGrid - _sorts app grid_
-- Caffeine - _avoid screen shutdown_
+- Unblank - _avoid screen turnoff when logging off_
 - Notification Configurator - _notification position control_
 
 ### Other packages
