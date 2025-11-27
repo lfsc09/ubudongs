@@ -32,6 +32,7 @@ Standard gnome terminal pumped with:
 
 - Fastfetch
 - Starship
+- eza - _to replace `ls`_
 - Vim (instead of Nano)
 
 ### Gnome Extensions
