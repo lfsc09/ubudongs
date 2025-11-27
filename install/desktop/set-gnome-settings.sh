@@ -41,5 +41,8 @@ gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
 # Disable top accessibility menu icon
 gsettings set org.gnome.desktop.a11y always-show-universal-access-status false
 
+# Enable to show hidden files by default in Nautilus
+gsettings set org.gtk.gtk4.Settings.FileChooser show-hidden true
+
 # Create default home Work folder
 mkdir -p ~/Work
