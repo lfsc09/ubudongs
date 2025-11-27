@@ -3,7 +3,29 @@ Opinionated Ubuntu Setup
 
 Inspired from https://github.com/basecamp/omakub
 
-## Changes
+## Installation
+
+For fresh Ubuntu 24.04+ installations with GNOME desktop:
+
+```bash
+cd /tmp && wget -qO- https://raw.githubusercontent.com/lfsc09/ubudongs/main/boot.sh | bash
+```
+
+**Note**: The installer will prompt you to select optional applications and configure Git. \
+**Note2**: Project will be cloned at `~/.local/share/ubudongs`.
+
+### Requirements
+
+- **OS:** Ubuntu 24.04 or later
+- **Desktop:** GNOME desktop environment (required)
+- **Disk Space:**
+  - Minimum: ~4 GB (no optional apps)
+  - Default: ~5.5 GB (with Datagrip + Solaar)
+  - Maximum: ~7 GB (all optional apps selected)
+
+**Important:** This script is designed for fresh installations only
+
+## Details
 
 ### Installed software
 
@@ -13,7 +35,7 @@ Inspired from https://github.com/basecamp/omakub
 - Flameshot - _lightshot substitute_
 - Obs (Optional)
 - Steam (Optional)
-- Solaar (Optional) - _for logitech periphericals_
+- Solaar (Optional) - _for logitech peripherals_
 - Virtual Box (Optional)
 - VLC
 - Vscode
@@ -35,19 +57,28 @@ Standard gnome terminal pumped with:
 - eza - _to replace `ls`_
 - Vim (instead of Nano)
 
-### Gnome Extensions
+### Gnome extensions
 
 - Tophat
 - AlphabeticalAppGrid - _sorts app grid_
-- Coffeine - _avoid screen shutdown_
+- Caffeine - _avoid screen shutdown_
+- Notification Configurator - _notification position control_
 
-## Additional info
+### Other packages
+
+- Build toolchain (build-essential, clang, rustc)
+- Development libraries (SSL, readline, YAML, FFI, etc.)
+- Media processing (ffmpeg, imagemagick, libvips)
+- PDF tools (mupdf)
+- Package managers (flatpak, pipx)
+
+### Additional info
 
 #### Git
 
 The script can setup git (name, email), and ask to create SSH and GPG keys to use in Github.
 
-If choosen to create, check them after install with:
+If chosen to create, check them after install with:
 
 ```bash
 gpg --armor --export "$(gpg --list-secret-keys --keyid-format LONG "$(git config --global user.email)" 2>/dev/null | grep -m 1 'sec' | awk '{print $2}' | cut -d'/' -f2)"
@@ -63,8 +94,9 @@ Script will cleanup (remove):
 
 - Firefox
 - Nano (replaced by vim)
+- **Ubudongs installation directory** - Self-deletes after reboot via crontab
 
-## Shotcut list
+## Hotkeys
 
 #### Cycle output devices
 
