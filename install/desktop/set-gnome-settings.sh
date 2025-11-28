@@ -44,6 +44,9 @@ gsettings set org.gnome.desktop.a11y always-show-universal-access-status false
 # Enable to show hidden files by default in Nautilus
 gsettings set org.gtk.gtk4.Settings.FileChooser show-hidden true
 
+# Set Nautilus (Files) default view to List View
+gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
+
 # Change configurations of Gnome Text Editor
 gsettings set org.gnome.TextEditor auto-indent true
 gsettings set org.gnome.TextEditor auto-save-delay uint32 3
