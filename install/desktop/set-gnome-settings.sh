@@ -44,5 +44,31 @@ gsettings set org.gnome.desktop.a11y always-show-universal-access-status false
 # Enable to show hidden files by default in Nautilus
 gsettings set org.gtk.gtk4.Settings.FileChooser show-hidden true
 
+# Change configurations of Gnome Text Editor
+gsettings set org.gnome.TextEditor auto-indent true
+gsettings set org.gnome.TextEditor auto-save-delay uint32 3
+gsettings set org.gnome.TextEditor custom-font 'FiraCode Nerd Font 11'
+gsettings set org.gnome.TextEditor discover-settings true
+gsettings set org.gnome.TextEditor enable-snippets false
+gsettings set org.gnome.TextEditor highlight-current-line true
+gsettings set org.gnome.TextEditor highlight-matching-brackets true
+gsettings set org.gnome.TextEditor indent-style 'space'
+gsettings set org.gnome.TextEditor indent-width -1
+gsettings set org.gnome.TextEditor last-save-directory ''
+gsettings set org.gnome.TextEditor line-height 1.2
+gsettings set org.gnome.TextEditor recolor-window true
+gsettings set org.gnome.TextEditor restore-session false
+gsettings set org.gnome.TextEditor right-margin-position uint32 120
+gsettings set org.gnome.TextEditor show-grid false
+gsettings set org.gnome.TextEditor show-line-numbers true
+gsettings set org.gnome.TextEditor show-map true
+gsettings set org.gnome.TextEditor show-right-margin true
+gsettings set org.gnome.TextEditor spellcheck false
+gsettings set org.gnome.TextEditor style-scheme 'solarized-dark'
+gsettings set org.gnome.TextEditor style-variant 'follow'
+gsettings set org.gnome.TextEditor tab-width uint32 2
+gsettings set org.gnome.TextEditor use-system-font false
+gsettings set org.gnome.TextEditor wrap-text true
+
 # Create default home Work folder
 mkdir -p ~/Work
