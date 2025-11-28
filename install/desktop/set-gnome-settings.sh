@@ -26,7 +26,7 @@ gsettings set org.gnome.desktop.notifications show-in-lock-screen false
 # Set Mouse speed (range is -1 to 1)
 gsettings set org.gnome.desktop.peripherals.mouse speed -0.8
 # Set Mouse cursor size
-gsettings set org.gnome.desktop.interface cursor-size 64
+gsettings set org.gnome.desktop.interface cursor-size 40
 
 # Set Regional Formats to United Kingdom
 gsettings set org.gnome.system.locale region "en_GB.UTF-8"
