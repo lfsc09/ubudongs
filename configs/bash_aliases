@@ -1,6 +1,11 @@
 # Overwrite default 'ls' with 'eza' for better visuals
-alias ls='eza --long --group-directories-last --header --inode --modified --total-size --octal-permissions'
-alias lsa='ls -a'
+# Some standard ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias lz='eza --long --group-directories-last --header --inode --modified --total-size --octal-permissions'
+alias lza='lz -a'
 alias lt='eza --tree --long --level=2 --header --git --created --modified --accessed --total-size --no-permissions'
 alias lta='lt -a'
 
