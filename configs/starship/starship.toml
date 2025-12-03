@@ -5,3 +5,7 @@ command_timeout = 200
 
 [git_status]
 conflicted = ""
+
+[character]
+success_symbol = '[>](bold green)'
+error_symbol = '[>](bold red) '
