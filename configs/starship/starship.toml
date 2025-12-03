@@ -7,5 +7,15 @@ command_timeout = 200
 conflicted = ""
 
 [character]
-success_symbol = '[>](bold green)'
+success_symbol = '[>](bold green) '
 error_symbol = '[>](bold red) '
+
+[username]
+show_always = true
+style_user = 'cyan'
+format = '{[$user]($style)'
+
+[hostname]
+ssh_only = false
+disabled = false
+format = '/[$ssh_symbol](red)[$hostname](cyan)} '
