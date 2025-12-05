@@ -49,7 +49,6 @@ gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 
 # Change configurations of Gnome Text Editor
 gsettings set org.gnome.TextEditor auto-indent true
-gsettings set org.gnome.TextEditor auto-save-delay uint32 3
 gsettings set org.gnome.TextEditor custom-font 'FiraCode Nerd Font 11'
 gsettings set org.gnome.TextEditor discover-settings true
 gsettings set org.gnome.TextEditor enable-snippets false
@@ -61,7 +60,7 @@ gsettings set org.gnome.TextEditor last-save-directory ''
 gsettings set org.gnome.TextEditor line-height 1.2
 gsettings set org.gnome.TextEditor recolor-window true
 gsettings set org.gnome.TextEditor restore-session false
-gsettings set org.gnome.TextEditor right-margin-position uint32 120
+gsettings set org.gnome.TextEditor right-margin-position 120
 gsettings set org.gnome.TextEditor show-grid false
 gsettings set org.gnome.TextEditor show-line-numbers true
 gsettings set org.gnome.TextEditor show-map true
@@ -69,7 +68,7 @@ gsettings set org.gnome.TextEditor show-right-margin true
 gsettings set org.gnome.TextEditor spellcheck false
 gsettings set org.gnome.TextEditor style-scheme 'solarized-dark'
 gsettings set org.gnome.TextEditor style-variant 'follow'
-gsettings set org.gnome.TextEditor tab-width uint32 2
+gsettings set org.gnome.TextEditor tab-width 2
 gsettings set org.gnome.TextEditor use-system-font false
 gsettings set org.gnome.TextEditor wrap-text true
 
