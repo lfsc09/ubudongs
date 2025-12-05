@@ -88,21 +88,9 @@ gsettings set org.gnome.desktop.screensaver picture-options 'zoom'
 ##############
 ubudongs_default_user_image="user.png"
 
-# User avatar destination directory
-avatar_image_dest_dir="$HOME/.face"
-if [ ! -d "$avatar_image_dest_dir" ]; then mkdir -p "$avatar_image_dest_dir"; fi
+# User avatar destination file
+avatar_image_path="$HOME/.face"
 
 # Add user default image
 ubudongs_user_image="$UBUDONGS_PATH/themes/dongs/${ubudongs_default_user_image}"
-cp $ubudongs_user_image $avatar_image_dest_dir
-
-# Set user avatar using AccountsService
-# Create/update the user configuration file for AccountsService
-sudo mkdir -p /var/lib/AccountsService/users
-sudo tee "/var/lib/AccountsService/users/$USER" > /dev/null <<EOF
-[User]
-Icon=$avatar_image_path
-EOF
-
-# Also create a .face symlink in home for compatibility
-ln -sf "$avatar_image_path" "$HOME/.face"
+cp $ubudongs_user_image $avatar_image_path
