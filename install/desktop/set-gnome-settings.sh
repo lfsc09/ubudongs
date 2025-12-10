@@ -66,7 +66,6 @@ gsettings set org.gnome.TextEditor show-line-numbers true
 gsettings set org.gnome.TextEditor show-map true
 gsettings set org.gnome.TextEditor show-right-margin true
 gsettings set org.gnome.TextEditor spellcheck false
-gsettings set org.gnome.TextEditor style-scheme 'solarized-dark'
 gsettings set org.gnome.TextEditor style-variant 'follow'
 gsettings set org.gnome.TextEditor tab-width 2
 gsettings set org.gnome.TextEditor use-system-font false
