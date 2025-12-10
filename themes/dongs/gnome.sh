@@ -1,5 +1,14 @@
 #!/bin/bash
 
+############################
+# Change Ubuntu theme color
+############################
+ubuntu_theme_color="purple"
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.interface gtk-theme "Yaru-$ubuntu_theme_color-dark"
+gsettings set org.gnome.desktop.interface icon-theme "Yaru-$ubuntu_theme_color"
+gsettings set org.gnome.desktop.interface accent-color "$ubuntu_theme_color" 2>/dev/null || true
+
 ######################
 # Change cursor theme
 ######################
@@ -8,19 +17,17 @@ ubudongs_cursor_dest_dir="/usr/share/icons"
 sudo tar -xf "$UBUDONGS_PATH/themes/dongs/cursors/bibata-modern-classic.tar.xz" -C "$ubudongs_cursor_dest_dir"
 sudo tar -xf "$UBUDONGS_PATH/themes/dongs/cursors/breezex-dark.tar.xz" -C "$ubudongs_cursor_dest_dir"
 
-gsettings set org.gnome.desktop.interface cursor-theme 'BreezeX-Dark'
-# gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Classic'
-# gsettings set org.gnome.desktop.interface cursor-theme 'Yaru'
-
-############################
-# Change Ubuntu theme color
-############################
-ubuntu_theme_color="purple"
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-gsettings set org.gnome.desktop.interface cursor-theme 'Yaru'
-gsettings set org.gnome.desktop.interface gtk-theme "Yaru-$ubuntu_theme_color-dark"
-gsettings set org.gnome.desktop.interface icon-theme "Yaru-$ubuntu_theme_color"
-gsettings set org.gnome.desktop.interface accent-color "$ubuntu_theme_color" 2>/dev/null || true
+# If extracted, try to set Breeze cursor theme
+if [ -d "$ubudongs_cursor_dest_dir/BreezeX-Dark" ]; then
+    gsettings set org.gnome.desktop.interface cursor-theme 'BreezeX-Dark'
+else
+    # If Breeze did not extract, try Bibata, else fallback to Yaru
+    if [ -d "$ubudongs_cursor_dest_dir/Bibata-Modern-Classic" ]; then
+        gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Classic'
+    else
+        gsettings set org.gnome.desktop.interface cursor-theme 'Yaru'
+    fi
+fi
 
 ######################################################
 # Setup Wallpapers & Lockscreens images & User avatar
