@@ -8,7 +8,7 @@ Inspired from https://github.com/basecamp/omakub
 For fresh Ubuntu 24.04+ installations with GNOME desktop:
 
 ```bash
-cd /tmp && wget -qO- https://raw.githubusercontent.com/lfsc09/ubudongs/main/boot.sh | bash
+cd /tmp && wget -qO- https://raw.githubusercontent.com/lfsc09/ubudongs/24.04/boot.sh | bash
 ```
 
 **Note**: The installer will prompt you to select optional applications and configure Git. \
@@ -16,7 +16,7 @@ cd /tmp && wget -qO- https://raw.githubusercontent.com/lfsc09/ubudongs/main/boot
 
 ### Requirements
 
-- **OS:** Ubuntu 24.04 or later
+- **OS:** Ubuntu 24.04
 - **Desktop:** GNOME desktop environment (required)
 - **Disk Space:**
   - Minimum: ~4 GB (no optional apps)
@@ -59,7 +59,7 @@ Standard gnome terminal pumped with:
 
 ### Gnome extensions
 
-- Tophat
+- Tophat - _show system monitor in waybar_
 - AlphabeticalAppGrid - _sorts app grid_
 - Unblank - _avoid screen turnoff when logging off_
 - Notification Configurator - _notification position control_
@@ -97,6 +97,21 @@ Script will cleanup (remove):
 - **Ubudongs installation directory** - Self-deletes after reboot via crontab
 
 ## Hotkeys
+
+#### Apps
+
+- `<Super>enter`: Terminal
+- `<Super>b`: Default browser
+- `<Super>f`: Home folder
+- `<Super>n`: Gnome text editor
+
+#### Terminal
+
+- `lz`: List files with eza
+- `lza`: `lz` +hidden files
+- `lt`: List files tree style with eza
+- `lta`: `lt` +hidden files
+- `dongs`: Run fastfetch to show system info
 
 #### Cycle output devices
 
