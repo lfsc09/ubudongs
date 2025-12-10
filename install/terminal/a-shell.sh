@@ -1,5 +1,7 @@
 #!/bin/bash
 
+print_header "Configuring gnome shell"
+
 # Configure the bash shell using Ubudongs defaults
 [ -f ~/.bashrc ] && mv ~/.bashrc ~/.bashrc.bak
 cp $UBUDONGS_PATH/configs/bashrc ~/.bashrc
@@ -23,3 +25,7 @@ echo "[:$default_profile_id]" > /tmp/gnome-terminal.default
 cat $UBUDONGS_PATH/configs/gnome-terminal/config >> /tmp/gnome-terminal.default
 cat /tmp/gnome-terminal.default | dconf load /org/gnome/terminal/legacy/profiles:/
 rm /tmp/gnome-terminal.default
+
+echo ""
+log_success "Gnome shell configured"
+print_footer

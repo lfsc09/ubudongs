@@ -1,5 +1,7 @@
 #!/bin/bash
 
+print_header "Gnome extensions installation"
+
 sudo apt install -y gnome-shell-extension-manager gir1.2-gtop-2.0 gir1.2-clutter-1.0
 pipx install gnome-extensions-cli --system-site-packages
 
@@ -66,3 +68,7 @@ gsettings set org.gnome.shell.extensions.tiling-assistant tile-topright-quarter 
 
 # Configure Notification Configurator
 gsettings set org.gnome.shell.extensions.notification-configurator notification-position 'right'
+
+echo ""
+log_success "Gnome extensions installed & configured"
+print_footer

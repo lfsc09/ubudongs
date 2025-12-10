@@ -1,5 +1,7 @@
 #!/bin/bash
 
+print_header "Git configuration"
+
 # Set identification from install inputs
 if [[ -n "${UBUDONGS_USER_NAME//[[:space:]]/}" ]]; then
   git config --global user.name "$UBUDONGS_USER_NAME"
@@ -10,7 +12,8 @@ if [[ -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]]; then
 fi
 
 git_config="$HOME/.config/git"
-echo -e "${INFO}\n[Info] Copying Git global configuration file to ${git_config}/config...${NC}"
+echo ""
+log_info "Copying Git global configuration file to ${git_config}/config..."
 if [ ! -d "$git_config" ]; then mkdir -p "$git_config"; fi
 cp $UBUDONGS_PATH/configs/git/config "${git_config}/config"
 
@@ -19,8 +22,9 @@ if [[ -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]] && gum confirm "Install Githu
   # Output file
   ssh_key_file="$HOME/.ssh/github_${UBUDONGS_USER_EMAIL//[@.]/_}_ed25519"
 
-  echo -e "${INFO}\n[Info] Create a new SSH key for Github at: $ssh_key_file${NC}"
-  echo -e "${WARNING}[Action] Prepare to fill the new passphrase.${NC}"
+  echo ""
+  log_info "Create a new SSH key for Github at: $ssh_key_file"
+  log_warn "Prepare to fill the new passphrase"
 
   if [[ "$PASSPHRASE" != "$CONFIRM_PASSPHRASE" ]]; then
     gum style --foreground "red" "Passphrases do not match. Exiting."
@@ -36,8 +40,9 @@ fi
 
 # Generate GPG keys for git if name and email are provided
 if [[ -n "${UBUDONGS_USER_NAME//[[:space:]]/}" && -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]] && gum confirm "Install Github GPG keys?"; then
-  echo -e "${INFO}\n[Info] Create a new Github GPG key for Git signing.${NC}"
-  echo -e "${WARNING}[Action] Prepare to fill the new passphrase.${NC}"
+  echo ""
+  log_info "Create a new Github GPG key for Git signing"
+  log_action "Prepare to fill the new passphrase"
 
   cat >gen-gpg-batch <<EOF
   Key-Type: rsa
@@ -57,3 +62,7 @@ EOF
   git config --global commit.gpgsign true
   git config --global tag.gpgsign true
 fi
+
+echo ""
+log_success "Git configured"
+print_footer

@@ -1,3 +1,11 @@
 #!/bin/bash
 
-sudo apt install -y solaar
+if ! command -v solaar &> /dev/null; then
+  print_header "Solaar installation"
+
+  sudo apt install -y solaar
+
+  echo ""
+  log_success "Solaar installed"
+  print_footer
+fi

@@ -1,4 +1,12 @@
 #!/bin/bash
-
 # Flameshot is a nice step-up over the default Gnome screenshot tool
-sudo apt install -y flameshot
+
+if ! command -v flameshot &> /dev/null; then
+  print_header "Flame installation"
+
+  sudo apt install -y flameshot
+
+  echo ""
+  log_success "Flame installed"
+  print_footer
+fi

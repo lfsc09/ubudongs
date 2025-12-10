@@ -1,5 +1,7 @@
 #!/bin/bash
 
+print_header "FiraCode fonts installation"
+
 mkdir -p ~/.local/share/fonts
 
 cd /tmp
@@ -10,3 +12,7 @@ rm -rf FiraCode.zip FiraCodeFont
 
 fc-cache
 cd -
+
+echo ""
+log_success "ForaCode fonts installed"
+print_footer

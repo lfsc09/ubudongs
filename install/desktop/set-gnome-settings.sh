@@ -1,5 +1,7 @@
 #!/bin/bash
 
+print_header "Gnome settings setup"
+
 # Center new windows in the middle of the screen
 gsettings set org.gnome.mutter center-new-windows true
 
@@ -73,3 +75,7 @@ gsettings set org.gnome.TextEditor wrap-text true
 
 # Create default home Work folder
 mkdir -p ~/Work
+
+echo ""
+log_success "Gnome settings configured"
+print_footer

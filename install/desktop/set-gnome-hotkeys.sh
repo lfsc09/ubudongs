@@ -1,5 +1,7 @@
 #!/bin/bash
 
+print_header "Gnome hotkeys setup"
+
 export UBUDONGS_ADDITIONAL_TOOLS_DIR=${UBUDONGS_ADDITIONAL_TOOLS_DIR:-"/usr/local/bin/ubudongs"}
 
 # Set Home Folder shortcut to Super+F
@@ -44,3 +46,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ name 'Gnome Text Editor'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ command 'gnome-text-editor'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ binding '<Super>n'
+
+echo ""
+log_success "Gnome keys configured"
+print_footer
