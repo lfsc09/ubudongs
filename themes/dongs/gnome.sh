@@ -1,18 +1,16 @@
 #!/bin/bash
 
-################################
-# Change cursor theme to Bibata
-################################
-# Extract and copy the Bibata cursor theme if not already installed
+######################
+# Change cursor theme
+######################
+# Extract and copy the custom cursors theme if not already installed
 ubudongs_cursor_dest_dir="/usr/share/icons"
 sudo tar -xf "$UBUDONGS_PATH/themes/dongs/cursors/bibata-modern-classic.tar.xz" -C "$ubudongs_cursor_dest_dir"
+sudo tar -xf "$UBUDONGS_PATH/themes/dongs/cursors/breezex-dark.tar.xz" -C "$ubudongs_cursor_dest_dir"
 
-# If extracted, set Bibata cursor theme, else fallback to Yaru
-if [ -d "$ubudongs_cursor_dest_dir/Bibata-Modern-Classic" ]; then
-    gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Classic'
-else
-    gsettings set org.gnome.desktop.interface cursor-theme 'Yaru'
-fi
+gsettings set org.gnome.desktop.interface cursor-theme 'BreezeX-Dark'
+# gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Classic'
+# gsettings set org.gnome.desktop.interface cursor-theme 'Yaru'
 
 ############################
 # Change Ubuntu theme color
