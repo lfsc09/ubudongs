@@ -36,7 +36,7 @@ cd /tmp && wget -qO- https://raw.githubusercontent.com/lfsc09/ubudongs/24.04/boo
 - Obs (Optional)
 - Steam (Optional)
 - Solaar (Optional) - _for logitech peripherals_
-- Virtual Box (Optional)
+- [Virtual Box](https://www.virtualbox.org/wiki/Downloads) (Manually)
 - VLC
 - Vscode
 - Zoom (Optional)
