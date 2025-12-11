@@ -57,14 +57,15 @@ jobs:
           echo "Analyzing commits:"
           echo "$commits"
           
-          # Count feat and fix commits
+          # Count feat, refactor and fix commits
           feat_count=$(echo "$commits" | grep -c "^feat:" || true)
+          refactor_count=$(echo "$commits" | grep -c "^refactor:" || true)
           fix_count=$(echo "$commits" | grep -c "^fix:" || true)
           breaking_count=$(echo "$commits" | grep -c "^feat!:" || true)
           breaking_count=$((breaking_count + $(echo "$commits" | grep -c "^fix!:" || true)))
           breaking_count=$((breaking_count + $(echo "$commits" | grep -c "BREAKING CHANGE:" || true)))
           
-          echo "Found: $feat_count feat, $fix_count fix, $breaking_count breaking changes"
+          echo "Found: $feat_count feat, $refactor_count refactor, $fix_count fix, $breaking_count breaking changes"
           
           # Update version based on conventional commits
           if [ $breaking_count -gt 0 ]; then
@@ -72,9 +73,9 @@ jobs:
             major=$((major + breaking_count))
             minor=0
             patch=0
-          elif [ $feat_count -gt 0 ]; then
-            # Features increment minor version
-            minor=$((minor + feat_count))
+          elif [ $feat_count -gt 0 ] || [ $refactor_count -gt 0 ]; then
+            # Features and refactors increment minor version
+            minor=$((minor + feat_count + refactor_count))
             patch=0
           elif [ $fix_count -gt 0 ]; then
             # Fixes increment patch version
