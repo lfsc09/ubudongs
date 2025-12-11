@@ -8,7 +8,7 @@ name: Auto Update Version
 on:
   push:
     branches:
-      - main
+      - 24.04
     paths-ignore:
       - 'version'
       - '.github/workflows/auto-version.yml'
