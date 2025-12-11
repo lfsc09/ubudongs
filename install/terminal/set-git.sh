@@ -11,11 +11,14 @@ if [[ -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]]; then
   git config --global user.email "$UBUDONGS_USER_EMAIL"
 fi
 
+# Copy global git config file if not exists
 git_config="$HOME/.config/git"
-echo ""
-log_info "Copying Git global configuration file to ${git_config}/config..."
-mkdir -p "$git_config"
-cp $UBUDONGS_PATH/configs/git/config "${git_config}/config"
+if [[ ! -f "$git_config/config" ]]; then
+  echo ""
+  log_info "Copying Git global configuration file to ${git_config}/config..."
+  mkdir -p "$git_config"
+  cp $UBUDONGS_PATH/configs/git/config "${git_config}/config"
+fi
 
 # Generate SSH keys for git if email is provided
 if [[ -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]] && gum confirm "Install Github SSH keys?"; then
