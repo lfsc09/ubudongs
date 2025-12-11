@@ -24,7 +24,7 @@ if [[ -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]] && gum confirm "Install Githu
 
   echo ""
   log_info "Create a new SSH key for Github at: $ssh_key_file"
-  log_warn "Prepare to fill the new passphrase"
+  log_action "Prepare to fill the new passphrase"
 
   if [[ "$PASSPHRASE" != "$CONFIRM_PASSPHRASE" ]]; then
     gum style --foreground "red" "Passphrases do not match. Exiting."
