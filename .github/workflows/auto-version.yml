@@ -1,0 +1,108 @@
+# feat: → increments minor version
+# fix: → increments patch version
+# feat!: or BREAKING CHANGE: → increments major version and resets others
+#
+# If no feat: or fix: prefixes are found, the version stays the same
+name: Auto Update Version
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'version'
+      - '.github/workflows/auto-version.yml'
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Calculate version update
+        id: version
+        run: |
+          # Get current version from file
+          current_version=$(cat version | sed 's/^v//')
+          
+          # Parse version components
+          major=$(echo $current_version | cut -d. -f1)
+          minor=$(echo $current_version | cut -d. -f2)
+          patch=$(echo $current_version | cut -d. -f3)
+          
+          echo "Current version: $major.$minor.$patch"
+          
+          # Get commits from this push
+          if [ "${{ github.event.before }}" == "0000000000000000000000000000000000000000" ]; then
+            # First push to branch
+            commits=$(git log --format=%s ${{ github.sha }})
+          else
+            # Normal push - get commits between before and after
+            commits=$(git log --format=%s ${{ github.event.before }}..${{ github.sha }})
+          fi
+          
+          echo "Analyzing commits:"
+          echo "$commits"
+          
+          # Count feat and fix commits
+          feat_count=$(echo "$commits" | grep -c "^feat:" || true)
+          fix_count=$(echo "$commits" | grep -c "^fix:" || true)
+          breaking_count=$(echo "$commits" | grep -c "^feat!:" || true)
+          breaking_count=$((breaking_count + $(echo "$commits" | grep -c "^fix!:" || true)))
+          breaking_count=$((breaking_count + $(echo "$commits" | grep -c "BREAKING CHANGE:" || true)))
+          
+          echo "Found: $feat_count feat, $fix_count fix, $breaking_count breaking changes"
+          
+          # Update version based on conventional commits
+          if [ $breaking_count -gt 0 ]; then
+            # Breaking changes increment major version
+            major=$((major + breaking_count))
+            minor=0
+            patch=0
+          elif [ $feat_count -gt 0 ]; then
+            # Features increment minor version
+            minor=$((minor + feat_count))
+            patch=0
+          elif [ $fix_count -gt 0 ]; then
+            # Fixes increment patch version
+            patch=$((patch + fix_count))
+          fi
+          
+          new_version="v$major.$minor.$patch"
+          echo "New version: $new_version"
+          
+          # Set outputs
+          echo "new_version=$new_version" >> $GITHUB_OUTPUT
+          echo "current_version=v$current_version" >> $GITHUB_OUTPUT
+          echo "changed=$([[ "v$current_version" != "$new_version" ]] && echo "true" || echo "false")" >> $GITHUB_OUTPUT
+      
+      - name: Update version file
+        if: steps.version.outputs.changed == 'true'
+        run: |
+          echo "${{ steps.version.outputs.new_version }}" > version
+          git add version
+          git commit -m "chore: bump version from ${{ steps.version.outputs.current_version }} to ${{ steps.version.outputs.new_version }} [skip ci]"
+          git push
+      
+      - name: Create summary
+        run: |
+          echo "## Version Update" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.version.outputs.changed }}" == "true" ]; then
+            echo "[OK] Version updated: \`${{ steps.version.outputs.current_version }}\` → \`${{ steps.version.outputs.new_version }}\`" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "[INFO] No version update needed (current: \`${{ steps.version.outputs.current_version }}\`)" >> $GITHUB_STEP_SUMMARY
+          fi
