@@ -58,9 +58,11 @@ echo -e "$ascii_art"
 log_warn "Ubudongs is for fresh Ubuntu 24.04+ installations only!"
 log_warn "Begin installation (or abort with ctrl+c)..."
 
-sudo apt update -y >/dev/null
-sudo apt upgrade -y >/dev/null
-sudo apt install -y wget curl git unzip gpg >/dev/null
+echo ""
+log_info "Updating system..."
+sudo apt-get update -y >/dev/null
+sudo apt-get upgrade -y >/dev/null
+sudo apt-get install -y wget curl git unzip gpg >/dev/null
 
 echo ""
 log_info "Cloning Ubudongs..."
