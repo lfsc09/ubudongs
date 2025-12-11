@@ -14,5 +14,5 @@ fc-cache
 cd -
 
 echo ""
-log_success "ForaCode fonts installed"
+log_success "FiraCode fonts installed"
 print_footer
