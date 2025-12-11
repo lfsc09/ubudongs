@@ -14,7 +14,7 @@ fi
 git_config="$HOME/.config/git"
 echo ""
 log_info "Copying Git global configuration file to ${git_config}/config..."
-if [ ! -d "$git_config" ]; then mkdir -p "$git_config"; fi
+mkdir -p "$git_config"
 cp $UBUDONGS_PATH/configs/git/config "${git_config}/config"
 
 # Generate SSH keys for git if email is provided
@@ -26,14 +26,18 @@ if [[ -n "${UBUDONGS_USER_EMAIL//[[:space:]]/}" ]] && gum confirm "Install Githu
   log_info "Create a new SSH key for Github at: $ssh_key_file"
   log_action "Prepare to fill the new passphrase"
 
-  if [[ "$PASSPHRASE" != "$CONFIRM_PASSPHRASE" ]]; then
-    gum style --foreground "red" "Passphrases do not match. Exiting."
-    exit 1
-  fi
-
   # Ask ssh passphrase
-  passphrase=$(gum input --prompt "SSH passphrase> ")
-  confirm_passphrase=$(gum input --prompt "Confirm SSH passphrase> ")
+  while true; do
+    passphrase=$(gum input --prompt "SSH passphrase> " --password)
+    confirm_passphrase=$(gum input --prompt "Confirm SSH passphrase> " --password)
+
+    if [[ "$passphrase" == "$confirm_passphrase" ]]; then
+      break
+    else
+      gum style --foreground "red" "Passphrases do not match. Please try again."
+      echo ""
+    fi
+  done
 
   ssh-keygen -t ed25519 -C "$UBUDONGS_USER_EMAIL" -f "$ssh_key_file" -N "$passphrase"
 fi

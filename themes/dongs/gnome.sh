@@ -36,7 +36,7 @@ fi
 screen_resolution=$(xdpyinfo | grep dimensions | awk '{print $2}')
 # Theme images destination directory
 ubudongs_images_dest_dir="$HOME/.local/share/backgrounds/dongs"
-if [ ! -d "$ubudongs_images_dest_dir" ]; then mkdir -p "$ubudongs_images_dest_dir"; fi
+mkdir -p "$ubudongs_images_dest_dir"
 
 #############
 # Wallpapers
