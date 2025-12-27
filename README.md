@@ -34,7 +34,7 @@ cd /tmp && wget -qO- https://raw.githubusercontent.com/lfsc09/ubudongs/24.04/boo
 - Datagrip (Optional)
 - Flameshot - _lightshot substitute_
 - Obs (Optional)
-- Steam (Optional)
+- Obsidian (Optional)
 - Solaar (Optional) - _for logitech peripherals_
 - [Virtual Box](https://www.virtualbox.org/wiki/Downloads) (Manually)
 - VLC
