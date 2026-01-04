@@ -9,7 +9,6 @@ log_skipline
 log_action "Get ready to make a few choices..."
 source $UBUDONGS_PATH/install/terminal/required/app-gum.sh >/dev/null
 source $UBUDONGS_PATH/install/select-optional-apps.sh
-source $UBUDONGS_PATH/install/identification.sh
 
 # Desktop software and tweaks will only be installed if we're running Gnome
 if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then

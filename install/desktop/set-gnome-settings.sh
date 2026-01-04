@@ -73,9 +73,6 @@ gsettings set org.gnome.TextEditor tab-width 2
 gsettings set org.gnome.TextEditor use-system-font false
 gsettings set org.gnome.TextEditor wrap-text true
 
-# Create default home Work folder
-mkdir -p ~/Work
-
-echo ""
+log_skipline
 log_success "Gnome settings configured"
 print_footer
