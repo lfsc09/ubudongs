@@ -15,5 +15,5 @@ for script in $UBUDONGS_PATH/install/terminal/additional/**/install.sh; do
 done
 shopt -u globstar
 
-echo ""
+log_skipline
 log_success "Terminal tools installed"

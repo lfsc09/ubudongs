@@ -5,7 +5,7 @@ if ! command -v vlc &> /dev/null; then
   
   sudo apt install -y vlc
   
-  echo ""
+  log_skipline
   log_success "Vlc installed"
   print_footer
 fi

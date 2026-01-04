@@ -6,7 +6,7 @@ if ! command -v obs-studio &> /dev/null; then
 
   sudo apt install -y obs-studio
 
-  echo ""
+  log_skipline
   log_success "OBS Studio installed"
   print_footer
 fi

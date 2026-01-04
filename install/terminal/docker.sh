@@ -22,7 +22,7 @@ if ! command -v docker &> /dev/null; then
   # Limit log size to avoid running out of disk
   echo '{"log-driver":"json-file","log-opts":{"max-size":"10m","max-file":"5"}}' | sudo tee /etc/docker/daemon.json
 
-  echo ""
+  log_skipline
   log_success "Docker installed"
   print_footer
 fi

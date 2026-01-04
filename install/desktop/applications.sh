@@ -11,6 +11,6 @@ cp $UBUDONGS_PATH/applications/icons/*.png "$application_icons_dest_dir/"
 
 for script in $UBUDONGS_PATH/applications/*.sh; do source $script; done
 
-echo ""
+log_skipline
 log_success "Ubudongs apps installed"
 print_footer

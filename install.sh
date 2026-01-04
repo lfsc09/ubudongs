@@ -5,7 +5,7 @@ set -e
 source $UBUDONGS_PATH/install/check-version.sh
 
 # Ask for some choices and information
-echo ""
+log_skipline
 log_action "Get ready to make a few choices..."
 source $UBUDONGS_PATH/install/terminal/required/app-gum.sh >/dev/null
 source $UBUDONGS_PATH/install/select-optional-apps.sh
@@ -29,7 +29,7 @@ if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
   # Reboot to pickup changes
   gum confirm "Ready to reboot for all settings to take effect?" && sudo reboot || true
 else
-  echo ""
+  log_skipline
   log_error "This installation requires GNOME desktop environment"
   exit 1
 fi

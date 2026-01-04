@@ -4,5 +4,5 @@
 # Set the favorite apps to empty
 gsettings set org.gnome.shell favorite-apps '[]'
 
-echo ""
+log_skipline
 log_success "Remove apps from docks"

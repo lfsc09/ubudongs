@@ -5,7 +5,7 @@ if ! command -v datagrip &> /dev/null; then
 
   sudo snap install datagrip --classic
 
-  echo ""
+  log_skipline
   log_success "Datagrip installed"
   print_footer
 fi

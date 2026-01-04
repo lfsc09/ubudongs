@@ -11,7 +11,7 @@ if ! command -v eza &> /dev/null; then
   sudo apt update
   sudo apt install -y eza
 
-  echo ""
+  log_skipline
   log_success "Eza installed"
   print_footer
 fi

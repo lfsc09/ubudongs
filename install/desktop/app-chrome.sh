@@ -11,7 +11,7 @@ if ! command -v google-chrome &> /dev/null; then
   xdg-settings set default-web-browser google-chrome.desktop
   cd -
 
-  echo ""
+  log_skipline
   log_success "Chrome installed"
   print_footer
 fi

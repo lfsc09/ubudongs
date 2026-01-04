@@ -16,7 +16,7 @@ if ! command -v code &> /dev/null; then
   sudo apt update
   sudo apt install -y code
 
-  echo ""
+  log_skipline
   log_success "VSCode installed"
   print_footer
 fi

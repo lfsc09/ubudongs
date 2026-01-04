@@ -12,7 +12,7 @@ if ! command -v brave-browser &> /dev/null; then
   sudo apt update
   sudo apt install -y brave-browser
 
-  echo ""
+  log_skipline
   log_success "Brave installed"
   print_footer
 fi

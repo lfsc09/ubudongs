@@ -10,7 +10,7 @@ if ! command -v obsidian &> /dev/null; then
   rm obsidian.deb
   cd -
 
-  echo ""
+  log_skipline
   log_success "Obsidian installed"
   print_footer
 fi

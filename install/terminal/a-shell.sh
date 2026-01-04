@@ -19,6 +19,6 @@ cp $UBUDONGS_PATH/configs/bash_functions ~/.bash_functions
 [ -f ~/.bash_aliases ] && mv ~/.bash_aliases ~/.bash_aliases.bak
 cp $UBUDONGS_PATH/configs/bash_aliases ~/.bash_aliases
 
-echo ""
+log_skipline
 log_success "Gnome shell configured"
 print_footer

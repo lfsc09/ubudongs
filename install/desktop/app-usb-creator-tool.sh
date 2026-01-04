@@ -5,7 +5,7 @@ if ! command -v usb-creator-gtk &> /dev/null; then
 
   sudo apt install -y usb-creator-gtk
 
-  echo ""
+  log_skipline
   log_success "Usb creator gtk installed"
   print_footer
 fi

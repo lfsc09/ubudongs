@@ -7,7 +7,7 @@ if ! command -v vim &> /dev/null; then
   # Make vim default editor
   sudo update-alternatives --set editor /usr/bin/vim.basic
 
-  echo ""
+  log_skipline
   log_success "Vim installed and set as default"
   print_footer
 fi

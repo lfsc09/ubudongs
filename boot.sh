@@ -18,36 +18,40 @@ ERROR='\033[1;31m' # Red
 NC='\033[0m' # No Color
 
 # Script functions
+log_skipline() {
+  echo "" >&2
+}
+
 log_info() {
-  echo -e "[INFO] $1"
+  echo -e "[INFO] $1" >&2
 }
 
 log_action() {
-  echo -e "${ACTION}[ACTION] $1${NC}"
+  echo -e "${ACTION}[ACTION] $1${NC}" >&2
 }
 
 log_success() {
-  echo -e "${OK}[OK] $1${NC}"
+  echo -e "${OK}[OK] $1${NC}" >&2
 }
 
 log_warn() {
-  echo -e "${WARNING}[WARN] $1${NC}"
+  echo -e "${WARNING}[WARN] $1${NC}" >&2
 }
 
 log_error() {
-  echo -e "${ERROR}[ERROR] $1${NC}"
+  echo -e "${ERROR}[ERROR] $1${NC}" >&2
 }
 
 print_header() {
-  echo ""
-  echo "========================================="
-  echo "$1"
-  echo "========================================="
+  echo "" >&2
+  echo "=========================================" >&2
+  echo "$1" >&2
+  echo "=========================================" >&2
 }
 
 print_footer() {
-  echo "========================================="
-  echo ""
+  echo "=========================================" >&2
+  echo "" >&2
 }
 
 export -f log_info log_action log_success log_warn log_error print_header print_footer
@@ -58,18 +62,18 @@ echo -e "$ascii_art"
 log_warn "Ubudongs is for fresh Ubuntu 24.04+ installations only!"
 log_warn "Begin installation (or abort with ctrl+c)..."
 
-echo ""
+log_skipline
 log_info "Updating system..."
 sudo apt-get update -y >/dev/null
 sudo apt-get upgrade -y >/dev/null
 sudo apt-get install -y wget curl git unzip gpg >/dev/null
 
-echo ""
+log_skipline
 log_info "Cloning Ubudongs..."
 rm -rf $UBUDONGS_PATH
 git clone https://github.com/lfsc09/ubudongs.git $UBUDONGS_PATH >/dev/null
 
-echo ""
+log_skipline
 log_warn "Ubudongs installer $(cat $UBUDONGS_PATH/version)"
 log_info "Installation starting..."
 

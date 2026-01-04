@@ -6,7 +6,7 @@ if ! command -v flameshot &> /dev/null; then
 
   sudo apt install -y flameshot
 
-  echo ""
+  log_skipline
   log_success "Flame installed"
   print_footer
 fi

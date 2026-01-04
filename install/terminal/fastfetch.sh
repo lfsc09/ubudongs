@@ -15,7 +15,7 @@ if ! command -v fastfetch &> /dev/null; then
   # Copy Ubudongs ASCII text file for fastfetch logo
   cp $UBUDONGS_PATH/ascii-art ~/.config/fastfetch/ubudongs-ascii
 
-  echo ""
+  log_skipline
   log_success "Fastfetch installed"
   print_footer
 fi

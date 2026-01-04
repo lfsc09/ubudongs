@@ -11,7 +11,7 @@ if ! command -v lazydocker &> /dev/null; then
   rm lazydocker.tar.gz lazydocker
   cd -
 
-  echo ""
+  log_skipline
   log_success "Lazydocker installed"
   print_footer
 fi

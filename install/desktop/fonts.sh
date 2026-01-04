@@ -13,6 +13,6 @@ rm -rf FiraCode.zip FiraCodeFont
 fc-cache
 cd -
 
-echo ""
+log_skipline
 log_success "FiraCode fonts installed"
 print_footer

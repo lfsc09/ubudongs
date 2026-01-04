@@ -10,7 +10,7 @@ if ! command -v zoom &> /dev/null; then
   rm zoom_amd64.deb
   cd -
 
-  echo ""
+  log_skipline
   log_success "Zoom installed"
   print_footer
 fi

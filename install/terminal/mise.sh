@@ -10,7 +10,7 @@ if ! command -v mise &> /dev/null; then
   sudo apt update
   sudo apt install -y mise
 
-  echo ""
+  log_skipline
   log_success "Mise installed"
   print_footer
 fi
