@@ -116,6 +116,7 @@ Script will cleanup (remove):
 #### Cycle output devices
 
 - `<Super><Control>\`: Cycle selected output devices.
+- `<Super><Control><Shift>\`: Configure cycle selected output devices.
 
 #### Change wallpaper
 
