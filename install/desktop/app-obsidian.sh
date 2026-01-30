@@ -4,6 +4,8 @@ if ! command -v obsidian &> /dev/null; then
   print_header "Obsidian installation"
 
   cd /tmp
+
+  # Get the latest version tag of Obsidian from GitHub API
   OBSIDIAN_VERSION=$(curl -s https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest | grep -Po '"tag_name": "v\K[^"]*')
   wget -O obsidian.deb "https://github.com/obsidianmd/obsidian-releases/releases/latest/download/obsidian_${OBSIDIAN_VERSION}_amd64.deb"
   sudo apt install -y ./obsidian.deb
