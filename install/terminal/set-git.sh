@@ -8,7 +8,9 @@ read_user_info() {
   local -n folder_ref=$4
 
   log_skipline
-  if [[ $user_num -gt 0 ]]; then
+  if [[ -z "$user_num" ]]; then
+    log_info "Getting information for user"
+  elif [[ $user_num -gt 0 ]]; then
     log_info "Getting information for user $user_num"
   fi
 
@@ -107,7 +109,7 @@ EOF
 }
 
 # Generate user-specific gitconfig
-generate_user_gitconfig() {
+generate_multi_user_gitconfig() {
   local name=$1
   local email=$2
   local signingkey=$3
@@ -130,7 +132,7 @@ generate_user_gitconfig() {
 }
 
 # Generate global gitconfig to include user configs
-generate_global_gitconfig() {
+generate_multi_global_gitconfig() {
   local folders_path=$1
   local emails=$2
 
@@ -144,6 +146,29 @@ generate_global_gitconfig() {
       echo "    path = $HOME/.gitconfig-${email_array[$i]//[@.]/-}"
       echo ""
     done
+  } > "$HOME/.gitconfig"
+}
+
+# Generate single user gitconfig
+generate_single_user_gitconfig() {
+  local name=$1
+  local email=$2
+  local signingkey=$3
+  local ssh_key=$4
+
+  {
+    echo "[user]"
+    echo "    name = $name"
+    echo "    email = $email"
+    if [[ -n "$signingkey" ]]; then
+      echo "    signingkey = $signingkey"
+      echo ""
+      echo "[commit]"
+      echo "    gpgsign = true"
+      echo ""
+      echo "[tag]"
+      echo "    gpgsign = true"
+    fi
   } > "$HOME/.gitconfig"
 }
 
@@ -161,7 +186,8 @@ fi
 num_git_users=$(gum choose {0..2} --header "Select number of git users to configure")
 
 # Generate user git configurations
-if [[ "$num_git_users" -gt 0 ]]; then
+# For multiple users, create separate gitconfig files and a global gitconfig to include them
+if [[ "$num_git_users" -gt 1 ]]; then
   log_skipline
   log_info "Configuring Git for $num_git_users user(s)"
 
@@ -170,7 +196,7 @@ if [[ "$num_git_users" -gt 0 ]]; then
     create_user_folder "user_folder_$i"
     ssh_key_file=$(create_user_ssh_key "${!user_email_$i}")
     gpg_key_id=$(create_user_gpg_key "${!user_name_$i}" "${!user_email_$i}" "$i")
-    generate_user_gitconfig "${!user_name_$i}" "${!user_email_$i}" "$gpg_key_id" "$ssh_key_file"
+    generate_multi_user_gitconfig "${!user_name_$i}" "${!user_email_$i}" "$gpg_key_id" "$ssh_key_file"
   done
 
   # Generate global gitconfig including all user configs
@@ -184,8 +210,20 @@ if [[ "$num_git_users" -gt 0 ]]; then
   # Remove trailing delimiters
   all_folders="${all_folders%|}"
   all_emails="${all_emails%|}"
-  generate_global_gitconfig "$all_folders" "$all_emails"
+  generate_multi_global_gitconfig "$all_folders" "$all_emails"
   
+  log_skipline
+  log_success "Git configured" 
+# For single user, create single root gitconfig file
+elif [[ "$num_git_users" -eq 1 ]]; then
+  log_skipline
+  log_info "Configuring Git for single user"
+
+  read_user_info "" "user_name" "user_email" "user_folder"
+  create_user_folder "user_folder"
+  ssh_key_file=$(create_user_ssh_key "${!user_email}")
+  gpg_key_id=$(create_user_gpg_key "${!user_name}" "${!user_email}" "")
+  generate_single_user_gitconfig "${!user_name}" "${!user_email}" "$gpg_key_id" "$ssh_key_file"
   log_skipline
   log_success "Git configured"
 else
