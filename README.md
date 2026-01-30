@@ -11,17 +11,12 @@ For fresh Ubuntu 24.04+ installations with GNOME desktop:
 cd /tmp && wget -qO- https://raw.githubusercontent.com/lfsc09/ubudongs/24.04/boot.sh | bash
 ```
 
-**Note**: The installer will prompt you to select optional applications and configure Git. \
-**Note2**: Project will be cloned at `~/.local/share/ubudongs`.
+**Note**: Project will be cloned at `~/.local/share/ubudongs`.
 
 ### Requirements
 
 - **OS:** Ubuntu 24.04
 - **Desktop:** GNOME desktop environment (required)
-- **Disk Space:**
-  - Minimum: ~4 GB (no optional apps)
-  - Default: ~5.5 GB (with Datagrip + Solaar)
-  - Maximum: ~7 GB (all optional apps selected)
 
 **Important:** This script is designed for fresh installations only
 
@@ -33,8 +28,9 @@ cd /tmp && wget -qO- https://raw.githubusercontent.com/lfsc09/ubudongs/24.04/boo
 - Chrome
 - Datagrip (Optional)
 - Flameshot - _lightshot substitute_
+- Gparted
 - Obs (Optional)
-- Obsidian
+- Startup Disk Creator
 - Solaar (Optional) - _for logitech peripherals_
 - [Virtual Box](https://www.virtualbox.org/wiki/Downloads) (Manually)
 - VLC
@@ -54,7 +50,7 @@ Standard gnome terminal pumped with:
 
 - Fastfetch
 - Starship
-- eza - _to replace `ls`_
+- eza - _to increment `ls`_
 - Vim (instead of Nano)
 
 ### Gnome extensions
