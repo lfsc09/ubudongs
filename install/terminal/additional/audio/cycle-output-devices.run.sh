@@ -18,37 +18,46 @@ fi
 # Read the selected sinks from the config file
 mapfile -t selected_sinks < "$config_file"
 
-# Check if all the selected sinks are valid
+# Filter out only valid (currently available) sinks from the selected list
+valid_sinks=()
 for sink in "${selected_sinks[@]}"; do
-  if [[ ! " ${sink_names[*]} " =~ " ${sink} " ]]; then
-    notify-send "Cycle Output Devices - Error" "Selected sink '$sink' is not a valid sink. Please run the setup script again." -i audio-speakers -h string:transient:true
-    exit 1
+  # Skip empty lines
+  [[ -z "$sink" ]] && continue
+  
+  if [[ " ${sink_names[*]} " =~ " ${sink} " ]]; then
+    valid_sinks+=("$sink")
   fi
 done
+
+# Check if we have at least one valid sink
+if [[ ${#valid_sinks[@]} -eq 0 ]]; then
+  notify-send "Cycle Output Devices - Error" "No valid audio devices available. Setup again with `<Ctrl><Super><Shift>backslash`." -i audio-speakers -h string:transient:true
+  exit 1
+fi
 
 # Get the current default sink name
 current_sink=$(pactl info | grep 'Default Sink:' | awk '{print $3}')
 
-# If the current sink is not in the selected list, set to the first selected sink
-if [[ ! " ${selected_sinks[*]} " =~ " ${current_sink} " ]]; then
-  pactl set-default-sink "${selected_sinks[0]}"
-  device_description=$(pactl list sinks | grep -A 100 "Name: ${selected_sinks[0]}" | grep "Description:" | awk '{$1=""; print $0}' | xargs)
+# If the current sink is not in the valid list, set to the first valid sink
+if [[ ! " ${valid_sinks[*]} " =~ " ${current_sink} " ]]; then
+  pactl set-default-sink "${valid_sinks[0]}"
+  device_description=$(pactl list sinks | grep -A 100 "Name: ${valid_sinks[0]}" | grep "Description:" | awk '{$1=""; print $0}' | xargs)
   notify-send "Audio Output Switched" "$device_description" -i audio-speakers -h string:transient:true
   exit 0
 fi
 
-# Get the index of the current sink in the selected sinks array
+# Get the index of the current sink in the valid sinks array
 current_index=-1
-for i in "${!selected_sinks[@]}"; do
-  if [[ "${selected_sinks[$i]}" == "${current_sink}" ]]; then
+for i in "${!valid_sinks[@]}"; do
+  if [[ "${valid_sinks[$i]}" == "${current_sink}" ]]; then
     current_index=${i}
     break
   fi
 done
 
 # Calculate the index of the next sink (cycle back to 0 if at the end)
-next_index=$(((current_index + 1) % ${#selected_sinks[@]}))
-next_sink_name=${selected_sinks[$next_index]}
+next_index=$(((current_index + 1) % ${#valid_sinks[@]}))
+next_sink_name=${valid_sinks[$next_index]}
 
 # Set the new default sink
 pactl set-default-sink "$next_sink_name"
@@ -57,7 +66,7 @@ pactl set-default-sink "$next_sink_name"
 # In newer Ubuntu versions (22.04+), this might be automatic
 pactl list short sink-inputs | while read -r line; do
   input_index=$(echo "$line" | awk '{print $1}')
-  pactl move-sink-input "$input_index" "$next_sink_name"
+  pactl move-sink-input "$input_index" "$next_sink_name" 2>/dev/null
 done
 
 device_description=$(pactl list sinks | grep -A 100 "Name: $next_sink_name" | grep "Description:" | awk '{$1=""; print $0}' | xargs)
