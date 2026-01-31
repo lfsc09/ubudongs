@@ -221,9 +221,9 @@ elif [[ "$num_git_users" -eq 1 ]]; then
 
   read_user_info "" "user_name" "user_email" "user_folder"
   create_user_folder "user_folder"
-  ssh_key_file=$(create_user_ssh_key "${!user_email}")
-  gpg_key_id=$(create_user_gpg_key "${!user_name}" "${!user_email}" "")
-  generate_single_user_gitconfig "${!user_name}" "${!user_email}" "$gpg_key_id" "$ssh_key_file"
+  ssh_key_file=$(create_user_ssh_key "$user_email")
+  gpg_key_id=$(create_user_gpg_key "$user_name" "$user_email" "")
+  generate_single_user_gitconfig "$user_name" "$user_email" "$gpg_key_id" "$ssh_key_file"
   log_skipline
   log_success "Git configured"
 else
