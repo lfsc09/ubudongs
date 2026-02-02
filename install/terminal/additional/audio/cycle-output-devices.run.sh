@@ -8,9 +8,9 @@ config_file="$HOME/.config/cycle-output-devices.conf"
 if [[ ! -f "$config_file" ]]; then
   # Run the setup script in current terminal or new terminal if not found
   if [[ -n "$TERM" && "$TERM" != "dumb" ]]; then
-    bash /usr/local/bin/ubudongs/cycle-output-devices.setup.sh
+    bash cycle-output-devices.setup
   else
-    x-terminal-emulator -e bash /usr/local/bin/ubudongs/cycle-output-devices.setup.sh
+    x-terminal-emulator -e bash cycle-output-devices.setup
   fi
   sleep 1
 fi

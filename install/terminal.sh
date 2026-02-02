@@ -7,7 +7,7 @@ log_info "Starting to install terminal tools and packages..."
 for installer in $UBUDONGS_PATH/install/terminal/*.sh; do source $installer; done
 
 # Add additional ubudongs tool scripts
-export UBUDONGS_ADDITIONAL_TOOLS_DIR="/usr/local/bin/ubudongs"
+export UBUDONGS_ADDITIONAL_TOOLS_DIR="/opt/ubudongs"
 sudo mkdir -p "$UBUDONGS_ADDITIONAL_TOOLS_DIR"
 shopt -s globstar
 for script in $UBUDONGS_PATH/install/terminal/additional/**/install.sh; do
