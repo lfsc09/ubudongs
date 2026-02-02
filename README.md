@@ -26,8 +26,9 @@ cd /tmp && wget -qO- https://raw.githubusercontent.com/lfsc09/ubudongs/24.04/boo
 
 - Brave
 - Chrome
-- Datagrip (Optional)
+- JetBrains Tools (Optional)
 - Flameshot - _lightshot substitute_
+- Gimp
 - Gparted
 - Obs (Optional)
 - Startup Disk Creator
@@ -90,7 +91,6 @@ Script will cleanup (remove):
 
 - Firefox
 - Nano (replaced by vim)
-- **Ubudongs installation directory** - Self-deletes after reboot via crontab
 
 ## Hotkeys
 
