@@ -16,6 +16,9 @@ if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
   gsettings set org.gnome.desktop.screensaver lock-enabled false
   gsettings set org.gnome.desktop.session idle-delay 0
 
+  # Install essential tools and tweaks
+  source $UBUDONGS_PATH/install/essential.sh
+
   # Install terminal tools
   source $UBUDONGS_PATH/install/terminal.sh
 
