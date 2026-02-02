@@ -14,6 +14,28 @@ if ! command -v jetbrains-toolbox &> /dev/null; then
   rm -rf jetbrains-toolbox-${jetbrains_toolbox_version}*.tar.gz
   cd -
 
+  desktop_file="$APPLICATIONS_DEST_DIR/jetbrains-toolbox.desktop"
+
+  cat <<EOF >$desktop_file
+[Desktop Entry]
+Icon=/opt/jetbrains-toolbox-${jetbrains_toolbox_version}/bin/toolbox-tray-color.png
+Exec=/opt/jetbrains-toolbox-${jetbrains_toolbox_version}/bin/jetbrains-toolbox
+Version=1.0
+Type=Application
+Categories=Development
+Name=JetBrains Toolbox
+StartupWMClass=jetbrains-toolbox
+Terminal=false
+MimeType=x-scheme-handler/jetbrains;
+X-GNOME-Autostart-enabled=true
+StartupNotify=false
+X-GNOME-Autostart-Delay=10
+X-MATE-Autostart-Delay=10
+X-KDE-autostart-after=panel
+EOF
+
+  chmod +x "$desktop_file"
+
   log_skipline
   log_success "JetBrains Toolbox installed"
   print_footer
