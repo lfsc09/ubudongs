@@ -8,8 +8,9 @@ if ! command -v jetbrains-toolbox &> /dev/null; then
   jetbrains_toolbox_version="3.2.0.65851"
   cd /tmp
   wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-${jetbrains_toolbox_version}.tar.gz
+  sudo rm -rf /opt/jetbrains-toolbox-${jetbrains_toolbox_version}
   sudo tar -xzf jetbrains-toolbox-${jetbrains_toolbox_version}.tar.gz -C /opt/
-  sudo ln -s /opt/jetbrains-toolbox-${jetbrains_toolbox_version}/bin/jetbrains-toolbox /usr/local/bin/jetbrains-toolbox
+  sudo ln -sf /opt/jetbrains-toolbox-${jetbrains_toolbox_version}/bin/jetbrains-toolbox /usr/local/bin/jetbrains-toolbox
   rm -rf jetbrains-toolbox-${jetbrains_toolbox_version}*.tar.gz
   cd -
 
