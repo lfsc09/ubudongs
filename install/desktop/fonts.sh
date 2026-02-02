@@ -11,12 +11,11 @@ find FiraCodeFont -type f -name "*.ttf" -exec cp {} ~/.local/share/fonts \;
 rm -rf FiraCode.zip FiraCodeFont
 
 # Get the latest version tag of JetBrains Mono from GitHub API
-JETBRAINS_VERSION=$(curl -s https://api.github.com/repos/JetBrains/JetBrainsMono/releases/latest | grep -Po '"tag_name": "v\K[^"]*')
-wget https://github.com/JetBrains/JetBrainsMono/releases/download/v${JETBRAINS_VERSION}/JetBrainsMono-${JETBRAINS_VERSION}.zip
-unzip JetBrainsMono-${JETBRAINS_VERSION}.zip -d JetBrainsMonoFont
+jetbrains_version=$(curl -s https://api.github.com/repos/JetBrains/JetBrainsMono/releases/latest | grep -Po '"tag_name": "v\K[^"]*')
+wget https://github.com/JetBrains/JetBrainsMono/releases/download/v${jetbrains_version}/JetBrainsMono-${jetbrains_version}.zip
+unzip JetBrainsMono-${jetbrains_version}.zip -d JetBrainsMonoFont
 find JetBrainsMonoFont -type f -name "*.ttf" -exec cp {} ~/.local/share/fonts \;
-rm -rf JetBrainsMono-${JETBRAINS_VERSION}.zip JetBrainsMonoFont
-
+rm -rf JetBrainsMono-${jetbrains_version}.zip JetBrainsMonoFont
 fc-cache
 cd -
 
