@@ -1,0 +1,21 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = true
+command_timeout = 200
+
+[git_status]
+conflicted = ""
+
+[character]
+success_symbol = '[>](bold green) '
+error_symbol = '[>](bold red) '
+
+[username]
+show_always = true
+style_user = 'cyan'
+format = '{[$user]($style)'
+
+[hostname]
+ssh_only = false
+disabled = false
+format = '/[$ssh_symbol](red)[$hostname](cyan)} '
