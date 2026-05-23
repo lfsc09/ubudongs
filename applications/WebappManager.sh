@@ -5,7 +5,7 @@ desktop_file="$APPLICATIONS_DEST_DIR/WebappManager.desktop"
 cat <<EOF >"$desktop_file"
 [Desktop Entry]
 Version=1.0
-Name=_WebappManager
+Name=Webapp Manager
 Comment=Create your own web app shortcuts
 Exec=gnome-terminal --title=WebappManager -- webapp-manager
 Terminal=false

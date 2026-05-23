@@ -1,6 +1,6 @@
 #!/bin/bash
 
-print_header "Configuring gnome shell"
+print_header "Configuring ptyxis shell"
 
 # Configure the bash shell using Ubudongs defaults
 [ -f ~/.bashrc ] && mv ~/.bashrc ~/.bashrc.bak
@@ -20,5 +20,5 @@ cp $UBUDONGS_PATH/configs/bash_functions ~/.bash_functions
 cp $UBUDONGS_PATH/configs/bash_aliases ~/.bash_aliases
 
 log_skipline
-log_success "Gnome shell configured"
+log_success "Ptyxis shell configured"
 print_footer

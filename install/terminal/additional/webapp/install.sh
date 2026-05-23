@@ -1,6 +1,6 @@
 #!/bin/bash
 
-print_header "Webapp script installation"
+print_header "Webapp Manager script installation"
 
 sudo cp $UBUDONGS_PATH/install/terminal/additional/webapp/webapp-manager.run.sh $UBUDONGS_ADDITIONAL_TOOLS_DIR/webapp-manager.run.sh
 sudo chmod +x $UBUDONGS_ADDITIONAL_TOOLS_DIR/webapp-manager.run.sh
