@@ -8,8 +8,8 @@ fi
 
 . /etc/os-release
 
-# Check if running on Ubuntu 24.04 or higher
-if [ "$ID" != "ubuntu" ] || [ $(echo "$VERSION_ID >= 24.04" | bc) != 1 ]; then
+# Check if running on Ubuntu 24.04 version exactly
+if [ "$ID" != "ubuntu" ] || [ "$VERSION_ID" != "24.04" ]; then
   log_skipline
   log_error "OS requirement not met."
   log_error "You are currently running: $ID $VERSION_ID"

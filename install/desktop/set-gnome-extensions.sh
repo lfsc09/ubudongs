@@ -47,25 +47,6 @@ gsettings set org.gnome.shell.extensions.tophat use-system-accent true
 # Configure AlphabeticalAppGrid
 gsettings set org.gnome.shell.extensions.alphabetical-app-grid folder-order-position 'end'
 
-# Configure default Ubuntu Tiling Assistant
-gsettings set org.gnome.shell.extensions.tiling-assistant active-window-hint 0
-gsettings set org.gnome.shell.extensions.tiling-assistant dynamic-keybinding-behavior 1
-gsettings set org.gnome.shell.extensions.tiling-assistant enable-raise-tile-group false
-gsettings set org.gnome.shell.extensions.tiling-assistant enable-tiling-popup false
-gsettings set org.gnome.shell.extensions.tiling-assistant maximize-with-gap true
-gsettings set org.gnome.shell.extensions.tiling-assistant single-screen-gap 6
-gsettings set org.gnome.shell.extensions.tiling-assistant window-gap 6
-gsettings set org.gnome.shell.extensions.tiling-assistant restore-window '[]'
-gsettings set org.gnome.shell.extensions.tiling-assistant tile-bottomleft-quarter "['<Control><Super>comma']"
-gsettings set org.gnome.shell.extensions.tiling-assistant tile-bottom-half "['<Control><Super>period']"
-gsettings set org.gnome.shell.extensions.tiling-assistant tile-bottomright-quarter "['<Control><Super>slash']"
-gsettings set org.gnome.shell.extensions.tiling-assistant tile-left-half "['<Control><Super>l']"
-gsettings set org.gnome.shell.extensions.tiling-assistant tile-maximize "['<Control><Super>semicolon']"
-gsettings set org.gnome.shell.extensions.tiling-assistant tile-right-half "['<Control><Super>apostrophe']"
-gsettings set org.gnome.shell.extensions.tiling-assistant tile-topleft-quarter "['<Control><Super>p']"
-gsettings set org.gnome.shell.extensions.tiling-assistant tile-top-half "['<Control><Super>bracketleft']"
-gsettings set org.gnome.shell.extensions.tiling-assistant tile-topright-quarter "['<Control><Super>bracketright']"
-
 # Configure Notification Configurator
 gsettings set org.gnome.shell.extensions.notification-configurator notification-position 'right'
 

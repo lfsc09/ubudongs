@@ -3,11 +3,15 @@ set -e
 
 ascii_art='
   _   _ _               _                        
- | | | | |__  _   _  __| | ___  _ __   __   ___ 
- | | | |  _ \| | | |/ _` |/ _ \|  _ \ / _ \/ __|
- | |_| | |_) | |_| | (_| | (_) | | | | (_| \__ \
-  \___/|____/ \____|\____|\___/|_| |_|\__, |___/
-                                      |___/     
+ | | | | |__  _   _  __| | ___  _ __   __   ___  
+ | | | |  _ \| | | |/ _` |/ _ \|  _ \ / _ \/ __| 
+ | |_| | |_) | |_| | (_| | (_) | | | | (_| \__ \ 
+  \___/|____/ \____|\____|\___/|_| |_|\__, |___/ 
+                                      |___/ ____  _  _     ___  _  _  
+                                           |___ \| || |   / _ \| || | 
+                                             __) | || |_ | | | | || |_
+                                            / __/|__   _|| |_| |__   _|
+                                           |_____|  |_| . \___/   |_| 
 '
 
 # Script colors
@@ -59,7 +63,7 @@ export OK ACTION WARNING ERROR NC
 export UBUDONGS_PATH="$HOME/.local/share/ubudongs"
 
 echo -e "$ascii_art"
-log_warn "Ubudongs is for fresh Ubuntu 24.04+ installations only!"
+log_warn "Ubudongs is for fresh Ubuntu 24.04 installation only!"
 log_warn "Begin installation (or abort with ctrl+c)..."
 
 log_skipline
@@ -71,7 +75,7 @@ sudo apt-get install -y wget curl git unzip gpg >/dev/null
 log_skipline
 log_info "Cloning Ubudongs..."
 rm -rf $UBUDONGS_PATH
-git clone https://github.com/lfsc09/ubudongs.git $UBUDONGS_PATH >/dev/null
+git clone --branch 24.04 https://github.com/lfsc09/ubudongs.git $UBUDONGS_PATH >/dev/null
 
 log_skipline
 log_warn "Ubudongs installer $(cat $UBUDONGS_PATH/version)"

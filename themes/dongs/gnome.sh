@@ -3,7 +3,7 @@
 ############################
 # Change Ubuntu theme color
 ############################
-ubuntu_theme_color="purple"
+ubuntu_theme_color="bark"
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 gsettings set org.gnome.desktop.interface gtk-theme "Yaru-$ubuntu_theme_color-dark"
 gsettings set org.gnome.desktop.interface icon-theme "Yaru-$ubuntu_theme_color"
@@ -30,63 +30,29 @@ else
 fi
 
 ######################################################
-# Setup Wallpapers & Lockscreens images & User avatar
+# Setup Wallpapers & User avatar
 ######################################################
-# Find current main screen resolution
-screen_resolution=$(xdpyinfo | grep dimensions | awk '{print $2}')
-# Theme images destination directory
-ubudongs_images_dest_dir="$HOME/.local/share/backgrounds/dongs"
-mkdir -p "$ubudongs_images_dest_dir"
 
 #############
 # Wallpapers
 #############
-# Default wallpaper filename
-ubudongs_default_wallpaper="evening-landscape.jpg"
-
-# Check wallpapers for the current resolution
 ubudongs_wallpapers_base_dir="$UBUDONGS_PATH/themes/dongs/wallpapers"
-if [ ! -d "$ubudongs_wallpapers_base_dir/@${screen_resolution}" ]; then
-    # If not found, fallback to 4k
-    ubudongs_wallpaper_resolution="3840x2160"
-else
-    ubudongs_wallpaper_resolution="$screen_resolution"
-fi
+# Theme wallpapers destination directory
+ubudongs_images_dest_dir="$HOME/.local/share/backgrounds"
+# Default wallpaper filename
+ubudongs_default_wallpaper="ubuntu-minimal.jpg"
 
 # Add all theme wallpapers
-cp -r $ubudongs_wallpapers_base_dir $ubudongs_images_dest_dir
+mkdir -p $ubudongs_images_dest_dir
+cp -r $ubudongs_wallpapers_base_dir/* $ubudongs_images_dest_dir
 
 # Get the default wallpaper
-ubudongs_wallpaper_filepath="$ubudongs_images_dest_dir/wallpapers/@${ubudongs_wallpaper_resolution}/${ubudongs_default_wallpaper}"
+ubudongs_wallpaper_filepath="$ubudongs_images_dest_dir/${ubudongs_default_wallpaper}"
 
 # Set default wallpaper
-gsettings set org.gnome.desktop.background picture-uri $ubudongs_wallpaper_filepath
-gsettings set org.gnome.desktop.background picture-uri-dark $ubudongs_wallpaper_filepath
+gsettings set org.gnome.desktop.background picture-uri "file://$ubudongs_wallpaper_filepath"
+gsettings set org.gnome.desktop.background picture-uri-dark "file://$ubudongs_wallpaper_filepath"
 gsettings set org.gnome.desktop.background picture-options 'zoom'
-
-##############
-# Lockscreens
-##############
-ubudongs_default_lockscreen="ubuntu-minimal.jpg"
-
-# Check lockscreen for the current resolution
-ubudongs_lockscreens_base_dir="$UBUDONGS_PATH/themes/dongs/lockscreens"
-if [ ! -d "$ubudongs_lockscreens_base_dir/@${screen_resolution}" ]; then
-    # If not found, fallback to 4k
-    ubudongs_lockscreen_resolution="3840x2160"
-else
-    ubudongs_lockscreen_resolution="$screen_resolution"
-fi
-
-# Add all theme lockscreens
-cp -r $ubudongs_lockscreens_base_dir $ubudongs_images_dest_dir
-
-# Get the default lockscreen
-ubudongs_lockscreen_filepath="$ubudongs_images_dest_dir/lockscreens/@${ubudongs_lockscreen_resolution}/${ubudongs_default_lockscreen}"
-
-# Set default lockscreen
-gsettings set org.gnome.desktop.screensaver picture-uri $ubudongs_lockscreen_filepath
-gsettings set org.gnome.desktop.screensaver picture-options 'zoom'
 
 ##############
 # User avatar

@@ -11,8 +11,17 @@ gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
 # Set Desktop icons to not show Home folder
 gsettings set org.gnome.shell.extensions.ding show-home false
 
-# Set Dock icon size to 24 pixels
-gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 24
+# Set some variables depending on main screen resolution
+small_screen_resolutions=("1920x1080" "1366x768" "1280x720" "1600x900" "1536x864" "1440x900" "1280x800" "1024x768")
+screen_resolution=$(xdpyinfo | grep dimensions | awk '{print $2}')
+if [[ " ${small_screen_resolutions[@]} " =~ " ${screen_resolution} " ]]; then
+  dock_icon_size=34
+else
+  dock_icon_size=28
+fi
+
+# Set Dock icon size
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size $dock_icon_size
 # Set Dock position to bottom
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
 # Set Dock behavior to not show volumes and devices
@@ -31,7 +40,7 @@ gsettings set org.gnome.desktop.peripherals.mouse speed -0.8
 gsettings set org.gnome.desktop.interface cursor-size 40
 
 # Set Regional Formats to United Kingdom
-gsettings set org.gnome.system.locale region "en_GB.UTF-8"
+gsettings set org.gnome.system.locale region 'en_GB.UTF-8'
 
 # Set Clock & Calendar to show week day
 gsettings set org.gnome.desktop.interface clock-show-weekday true
@@ -48,6 +57,25 @@ gsettings set org.gtk.gtk4.Settings.FileChooser show-hidden true
 
 # Set Nautilus (Files) default view to List View
 gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
+
+# Configure default Ubuntu Tiling Assistant
+gsettings set org.gnome.shell.extensions.tiling-assistant active-window-hint 0
+gsettings set org.gnome.shell.extensions.tiling-assistant dynamic-keybinding-behavior 1
+gsettings set org.gnome.shell.extensions.tiling-assistant enable-raise-tile-group false
+gsettings set org.gnome.shell.extensions.tiling-assistant enable-tiling-popup false
+gsettings set org.gnome.shell.extensions.tiling-assistant maximize-with-gap true
+gsettings set org.gnome.shell.extensions.tiling-assistant single-screen-gap 6
+gsettings set org.gnome.shell.extensions.tiling-assistant window-gap 6
+gsettings set org.gnome.shell.extensions.tiling-assistant restore-window '[]'
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-bottomleft-quarter "['<Control><Super>comma']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-bottom-half "['<Control><Super>period']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-bottomright-quarter "['<Control><Super>slash']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-left-half "['<Control><Super>l']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-maximize "['<Control><Super>semicolon']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-right-half "['<Control><Super>apostrophe']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-topleft-quarter "['<Control><Super>p']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-top-half "['<Control><Super>bracketleft']"
+gsettings set org.gnome.shell.extensions.tiling-assistant tile-topright-quarter "['<Control><Super>bracketright']"
 
 # Change configurations of Gnome Text Editor
 gsettings set org.gnome.TextEditor auto-indent true
