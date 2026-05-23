@@ -9,7 +9,7 @@ fi
 . /etc/os-release
 
 # Check if running on Ubuntu 26.04 version exactly
-if [ "$ID" != "ubuntu" ] || [ $(echo "$VERSION_ID == 26.04" | bc) != 1 ]; then
+if [ "$ID" != "ubuntu" ] || [ "$VERSION_ID" != "26.04" ]; then
   log_skipline
   log_error "OS requirement not met."
   log_error "You are currently running: $ID $VERSION_ID"
