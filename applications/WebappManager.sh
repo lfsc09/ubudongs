@@ -1,16 +1,16 @@
 #!/bin/bash
 
-desktop_file="$APPLICATIONS_DEST_DIR/WebappCreator.desktop"
+desktop_file="$APPLICATIONS_DEST_DIR/WebappManager.desktop"
 
 cat <<EOF >"$desktop_file"
 [Desktop Entry]
 Version=1.0
-Name=Webapp Creator
+Name=Webapp Manager
 Comment=Create your own web app shortcuts
-Exec=gnome-terminal --title=WebappCreator -- webapp-create
+Exec=gnome-terminal --title=WebappManager -- webapp-manager
 Terminal=false
 Type=Application
-Icon=$APPLICATIONS_DEST_DIR/icons/WebappCreator.png
+Icon=$APPLICATIONS_DEST_DIR/icons/WebappManager.png
 Categories=GTK;
 StartupNotify=false
 EOF
