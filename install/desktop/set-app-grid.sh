@@ -16,7 +16,7 @@ sudo rm -rf /usr/share/applications/display-im7.q16.desktop
 gsettings set org.gnome.desktop.app-folders folder-children "['System', 'Utilities', 'YaST', 'Pardus', 'WebApps']"
 # Default ubuntu app-folders
 gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/System/ apps "['nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.DiskUtility.desktop', 'im-config.desktop', 'org.gnome.Logs.desktop', 'org.gnome.Sysprof.desktop', 'desktop-security-center_desktop-security-center.desktop', 'update-manager.dektop', 'firmware-updater_firmware-updater.desktop']"
-gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Xtra/ apps "['org.gnome.Papers.desktop', 'org.gnome.font-viewer.desktop' ,'org.gnome.Loupe.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.Characters.desktop', 'org.gnome.clocks.desktop', 'gnome-language-selector.desktop', 'nvidia-settings.desktop']"
+gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Utilities/ apps "['org.gnome.Papers.desktop', 'org.gnome.font-viewer.desktop' ,'org.gnome.Loupe.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.Characters.desktop', 'org.gnome.clocks.desktop', 'gnome-language-selector.desktop', 'nvidia-settings.desktop']"
 # Custom app-folder
 gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/WebApps/ name 'WebApps'
 gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/WebApps/ apps "[]"
