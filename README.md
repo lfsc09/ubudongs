@@ -29,7 +29,7 @@ cd /tmp && wget -qO- https://raw.githubusercontent.com/lfsc09/ubudongs/26.04/boo
 
 #### Git
 
-The install script can setup git (name, email), and ask to create SSH and GPG keys to use in Github.
+The install script can setup one or multiple git configurations with (name, email), and ask to create SSH and GPG keys to use in Github.
 
 If chosen to create, check them after install with:
 
@@ -47,7 +47,7 @@ cat ~/.ssh/github_$(git config --global user.email | tr '@' '_' | tr '.' '_')_ed
 
 - JetBrains Tools
 - Obs Studio
-- Solaar (for logitech peripherals)
+- Solaar **[for logitech peripherals]**
 - Zoom
 
 #### Runtimes
@@ -60,7 +60,7 @@ cat ~/.ssh/github_$(git config --global user.email | tr '@' '_' | tr '.' '_')_ed
 
 - Brave
 - Chrome
-- Flameshot *(similar to Windows lightshot)*
+- Flameshot **[similar to Windows lightshot]**
 - Gimp
 - Gnome Tweaks Tool
 - Gparted
@@ -76,39 +76,41 @@ cat ~/.ssh/github_$(git config --global user.email | tr '@' '_' | tr '.' '_')_ed
 #### Dev Tools
 
 - Docker Engine
-- LazyDocker (usable as App)
-- Mise (language version control)
-- Standard terminal **(pumped with)**
+- LazyDocker **[usable as App]**
+- Mise **[language version control]**
+- Standard terminal *(pumped with)*
   - Fastfetch
   - Starship
-  - eza - _to increment `ls`_
-  - Vim (instead of Nano)
+  - eza **[to increment `ls`]**
+  - Vim **[instead of Nano]**
 
 #### Gnome extensions
 
-- Tophat - _show system monitor in waybar_
-- AlphabeticalAppGrid - _sorts app grid_
-- Unblank - _avoid screen turnoff when logging off_
+- Tophat **[show system monitor in waybar]**
+- AlphabeticalAppGrid **[sorts app grid]**
+- Unblank **[avoid screen turnoff when logging off]**
 
 #### Other tools
 
-- Webapp manager (create webapps from browsers)
-- Audio output device switcher (cycle output devices with hotkey)
+- Webapp manager **[create webapps from browsers]**
+- Audio output device switcher **[cycle output devices with hotkey]**
 
 #### Other packages
 
-- Build toolchain (build-essential, clang, rustc)
-- Development libraries (SSL, readline, YAML, FFI, etc.)
-- Media processing (ffmpeg, imagemagick, libvips)
-- PDF tools (mupdf)
-- Package managers (flatpak, pipx)
+- Build toolchain **[build-essential, clang, rustc]**
+- Development libraries **[SSL, readline, YAML, FFI, more..]**
+- Media processing **[ffmpeg, imagemagick, libvips]**
+- PDF tools **[mupdf]**
+- Package managers **[flatpak, pipx]**
 
 ### Cleanup
 
-Script will cleanup (remove):
+Script will cleanup *(remove)*:
 
 - Firefox
-- Nano (replaced by vim)
+- Nano **[replaced by vim]**
+
+</br>
 
 ## Hotkeys
 
@@ -135,6 +137,8 @@ Script will cleanup (remove):
 - `<Super><Control>,`: Tile window to bottom-left.
 - `<Super><Control>.`: Tile window to bottom half.
 - `<Super><Control>/`: Tile window to bottom-right.
+
+</br>
 
 ## Terminal commands
 
