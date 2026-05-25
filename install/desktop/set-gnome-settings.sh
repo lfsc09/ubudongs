@@ -67,6 +67,10 @@ gsettings set org.gnome.shell.extensions.tiling-assistant enable-tiling-popup fa
 gsettings set org.gnome.shell.extensions.tiling-assistant maximize-with-gap true
 gsettings set org.gnome.shell.extensions.tiling-assistant single-screen-gap 6
 gsettings set org.gnome.shell.extensions.tiling-assistant window-gap 6
+gsettings set org.gnome.shell.extensions.tiling-assistant screen-top-gap 6
+gsettings set org.gnome.shell.extensions.tiling-assistant screen-bottom-gap 6
+gsettings set org.gnome.shell.extensions.tiling-assistant screen-left-gap 6
+gsettings set org.gnome.shell.extensions.tiling-assistant screen-right-gap 6
 gsettings set org.gnome.shell.extensions.tiling-assistant restore-window '[]'
 gsettings set org.gnome.shell.extensions.tiling-assistant tile-bottomleft-quarter "['<Control><Super>comma']"
 gsettings set org.gnome.shell.extensions.tiling-assistant tile-bottom-half "['<Control><Super>period']"
