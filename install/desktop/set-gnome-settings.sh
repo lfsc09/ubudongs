@@ -59,7 +59,8 @@ gsettings set org.gtk.gtk4.Settings.FileChooser show-hidden true
 gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 
 # Configure default Ubuntu Tiling Assistant
-gsettings set org.gnome.shell.extensions.tiling-assistant active-window-hint 0
+gsettings set org.gnome.shell.extensions.tiling-assistant focus-hint 0
+gsettings set org.gnome.shell.extensions.tiling-assistant focus-hint-outline-size 2
 gsettings set org.gnome.shell.extensions.tiling-assistant dynamic-keybinding-behavior 1
 gsettings set org.gnome.shell.extensions.tiling-assistant enable-raise-tile-group false
 gsettings set org.gnome.shell.extensions.tiling-assistant enable-tiling-popup false
