@@ -89,7 +89,6 @@ cat ~/.ssh/github_$(git config --global user.email | tr '@' '_' | tr '.' '_')_ed
 
 #### Other tools
 
-- Webapp manager **[create webapps from browsers]**
 - Audio output device switcher **[cycle output devices with hotkey]**
 
 #### Other packages
